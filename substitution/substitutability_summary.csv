@@ -1,0 +1,579 @@
+,item,item_substitute,substitutitability index,comm_group,group
+0,Apples and products,Bananas,0.080926664,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+1,Beans,Bananas,0.059877064,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+2,"Fruits, Other",Bananas,0.08815776,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+3,Grapefruit and products,Bananas,0.057110634,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+4,Grapes and products (excl wine),Bananas,0.07199566,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+5,Hops,Bananas,0.1575562,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+6,"Lemons, Limes and products",Bananas,0.07632188,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+7,Nuts and products,Bananas,0.063106425,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+8,Onions,Bananas,0.059186894,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+9,"Oranges, Mandarines",Bananas,0.06719214,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+10,Peas,Bananas,0.091071695,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+11,Pineapples and products,Bananas,0.07895816,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+12,"Pulses, Other and products",Bananas,0.04167384,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+13,"Spices, Other",Bananas,0.070083864,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+14,Tomatoes and products,Bananas,0.06380539,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+15,"Vegetables, Other",Bananas,0.039406616,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+16,Apples and products,Beans,0.08281381,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+17,Bananas,Beans,0.06338188,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+18,Cloves,Beans,0.2645667,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+19,Dates,Beans,0.06866306,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+20,"Fruits, Other",Beans,0.05703607,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+21,Grapefruit and products,Beans,0.08303209,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+22,Grapes and products (excl wine),Beans,0.07521515,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+23,"Lemons, Limes and products",Beans,0.08511009,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+24,Nuts and products,Beans,0.06300791,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+25,Onions,Beans,0.066016346,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+26,Peas,Beans,0.11855729,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+27,Pimento,Beans,0.096266985,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+28,Pineapples and products,Beans,0.07931591,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+29,"Pulses, Other and products",Beans,0.046670813,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+30,"Spices, Other",Beans,0.10307956,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+31,"Vegetables, Other",Beans,0.108250834,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+32,Apples and products,"Citrus, Other",0.059478816,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+33,Bananas,"Citrus, Other",0.122311234,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+34,Beans,"Citrus, Other",0.058344964,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+35,"Fruits, Other","Citrus, Other",0.09789403,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+36,Grapefruit and products,"Citrus, Other",0.09633738,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+37,"Lemons, Limes and products","Citrus, Other",0.10307672,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+38,Nuts and products,"Citrus, Other",0.055881806,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+39,Onions,"Citrus, Other",0.052369926,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+40,"Oranges, Mandarines","Citrus, Other",0.101493716,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+41,Pineapples and products,"Citrus, Other",0.08585808,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+42,"Pulses, Other and products","Citrus, Other",0.044352908,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+43,"Spices, Other","Citrus, Other",0.117042795,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+44,Tomatoes and products,"Citrus, Other",0.11368143,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+45,"Vegetables, Other","Citrus, Other",0.041516535,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+46,Apples and products,Cloves,0.031572793,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+47,Apples and products,Dates,0.07368816,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+48,Bananas,Dates,0.11590909,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+49,Beans,Dates,0.096375555,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+50,"Fruits, Other",Dates,0.0913197,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+51,Grapes and products (excl wine),Dates,0.08325924,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+52,"Lemons, Limes and products",Dates,0.06382963,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+53,Nuts and products,Dates,0.058862716,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+54,Onions,Dates,0.08918091,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+55,"Oranges, Mandarines",Dates,0.083970115,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+56,Pepper,Dates,0.12738606,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+57,Pineapples and products,Dates,0.13815403,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+58,"Pulses, Other and products",Dates,0.09668337,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+59,Tomatoes and products,Dates,0.11011532,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+60,"Vegetables, Other",Dates,0.06550155,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+61,Apples and products,"Fruits, Other",0.07536341,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+62,Bananas,"Fruits, Other",0.042459585,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+63,Beans,"Fruits, Other",0.06591272,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+64,"Citrus, Other","Fruits, Other",0.18741886,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+65,Dates,"Fruits, Other",0.06776988,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+66,Grapes and products (excl wine),"Fruits, Other",0.0356999,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+67,Hops,"Fruits, Other",0.0855949,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+68,"Lemons, Limes and products","Fruits, Other",0.055483975,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+69,Nuts and products,"Fruits, Other",0.040812027,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+70,Onions,"Fruits, Other",0.075117216,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+71,"Oranges, Mandarines","Fruits, Other",0.036671333,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+72,Pineapples and products,"Fruits, Other",0.064310655,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+73,"Pulses, Other and products","Fruits, Other",0.07339078,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+74,Tomatoes and products,"Fruits, Other",0.041243427,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+75,"Vegetables, Other","Fruits, Other",0.052663323,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+76,Apples and products,Grapefruit and products,0.06328003,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+77,Bananas,Grapefruit and products,0.0817623,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+78,"Citrus, Other",Grapefruit and products,0.1975129,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+79,Dates,Grapefruit and products,0.073669046,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+80,"Fruits, Other",Grapefruit and products,0.08888063,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+81,Grapes and products (excl wine),Grapefruit and products,0.06327156,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+82,"Lemons, Limes and products",Grapefruit and products,0.06583354,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+83,Nuts and products,Grapefruit and products,0.058166824,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+84,Onions,Grapefruit and products,0.083288215,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+85,"Oranges, Mandarines",Grapefruit and products,0.052048363,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+86,"Pulses, Other and products",Grapefruit and products,0.057285514,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+87,Tomatoes and products,Grapefruit and products,0.07983479,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+88,"Vegetables, Other",Grapefruit and products,0.041818872,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+89,Apples and products,Grapes and products (excl wine),0.056272797,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+90,Bananas,Grapes and products (excl wine),0.0842048,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+91,Beans,Grapes and products (excl wine),0.06796974,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+92,"Citrus, Other",Grapes and products (excl wine),0.13096988,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+93,Dates,Grapes and products (excl wine),0.11374566,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+94,"Fruits, Other",Grapes and products (excl wine),0.07214186,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+95,Hops,Grapes and products (excl wine),0.1016906,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+96,"Lemons, Limes and products",Grapes and products (excl wine),0.06539217,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+97,Nuts and products,Grapes and products (excl wine),0.09844499,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+98,Onions,Grapes and products (excl wine),0.06952379,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+99,"Oranges, Mandarines",Grapes and products (excl wine),0.10934078,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+100,Peas,Grapes and products (excl wine),0.14473839,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+101,Pepper,Grapes and products (excl wine),0.12737264,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+102,Pimento,Grapes and products (excl wine),0.08623599,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+103,Pineapples and products,Grapes and products (excl wine),0.114653476,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+104,"Pulses, Other and products",Grapes and products (excl wine),0.10356367,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+105,"Spices, Other",Grapes and products (excl wine),0.05733259,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+106,Tomatoes and products,Grapes and products (excl wine),0.08308529,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+107,"Vegetables, Other",Grapes and products (excl wine),0.08143211,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+108,Apples and products,Hops,0.12272864,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+109,Bananas,Hops,0.092324905,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+110,Beans,Hops,0.09353846,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+111,Dates,Hops,0.12843582,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+112,"Fruits, Other",Hops,0.08327852,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+113,Grapes and products (excl wine),Hops,0.11948861,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+114,"Lemons, Limes and products",Hops,0.12568168,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+115,Nuts and products,Hops,0.09057323,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+116,"Oranges, Mandarines",Hops,0.07271397,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+117,Pineapples and products,Hops,0.08675666,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+118,"Pulses, Other and products",Hops,0.06658467,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+119,"Spices, Other",Hops,0.062905334,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+120,Tomatoes and products,Hops,0.056747757,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+121,Apples and products,"Lemons, Limes and products",0.05631437,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+122,Bananas,"Lemons, Limes and products",0.04909804,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+123,Beans,"Lemons, Limes and products",0.057679437,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+124,Dates,"Lemons, Limes and products",0.071904115,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+125,"Fruits, Other","Lemons, Limes and products",0.09681569,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+126,Grapefruit and products,"Lemons, Limes and products",0.12627311,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+127,Grapes and products (excl wine),"Lemons, Limes and products",0.13822323,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+128,Nuts and products,"Lemons, Limes and products",0.0904282,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+129,Onions,"Lemons, Limes and products",0.116646044,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+130,"Oranges, Mandarines","Lemons, Limes and products",0.09597053,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+131,Pepper,"Lemons, Limes and products",0.14305209,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+132,Pimento,"Lemons, Limes and products",0.10359975,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+133,Pineapples and products,"Lemons, Limes and products",0.051961955,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+134,"Pulses, Other and products","Lemons, Limes and products",0.08932358,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+135,Tomatoes and products,"Lemons, Limes and products",0.1081783,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+136,"Vegetables, Other","Lemons, Limes and products",0.067478396,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+137,Apples and products,Nuts and products,0.047130566,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+138,Beans,Nuts and products,0.07967915,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+139,Dates,Nuts and products,0.07666313,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+140,"Fruits, Other",Nuts and products,0.058298893,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+141,Grapefruit and products,Nuts and products,0.094187565,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+142,Grapes and products (excl wine),Nuts and products,0.09700398,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+143,"Lemons, Limes and products",Nuts and products,0.043811217,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+144,Onions,Nuts and products,0.066303775,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+145,"Oranges, Mandarines",Nuts and products,0.096924126,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+146,Peas,Nuts and products,0.10672428,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+147,Pepper,Nuts and products,0.1701221,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+148,Pimento,Nuts and products,0.113883935,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+149,Pineapples and products,Nuts and products,0.06738411,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+150,"Pulses, Other and products",Nuts and products,0.059899066,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+151,"Spices, Other",Nuts and products,0.08868481,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+152,Tomatoes and products,Nuts and products,0.033658966,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+153,"Vegetables, Other",Nuts and products,0.084469534,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+154,Apples and products,Onions,0.08967227,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+155,Bananas,Onions,0.071983,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+156,Beans,Onions,0.06806108,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+157,"Citrus, Other",Onions,0.16169217,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+158,Dates,Onions,0.0802149,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+159,"Fruits, Other",Onions,0.07408723,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+160,Grapefruit and products,Onions,0.16198201,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+161,"Lemons, Limes and products",Onions,0.09561364,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+162,Nuts and products,Onions,0.09641785,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+163,"Oranges, Mandarines",Onions,0.067495815,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+164,Pimento,Onions,0.100633934,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+165,Pineapples and products,Onions,0.061802957,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+166,"Pulses, Other and products",Onions,0.06496877,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+167,"Spices, Other",Onions,0.09014214,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+168,Tomatoes and products,Onions,0.047404233,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+169,"Vegetables, Other",Onions,0.122897394,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+170,Apples and products,"Oranges, Mandarines",0.084190674,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+171,Bananas,"Oranges, Mandarines",0.063624084,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+172,Beans,"Oranges, Mandarines",0.06858149,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+173,Dates,"Oranges, Mandarines",0.043423492,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+174,"Fruits, Other","Oranges, Mandarines",0.107540414,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+175,Grapefruit and products,"Oranges, Mandarines",0.097493924,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+176,Grapes and products (excl wine),"Oranges, Mandarines",0.08806571,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+177,Hops,"Oranges, Mandarines",0.20008026,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+178,"Lemons, Limes and products","Oranges, Mandarines",0.08786654,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+179,Nuts and products,"Oranges, Mandarines",0.09907723,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+180,Onions,"Oranges, Mandarines",0.07419368,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+181,Peas,"Oranges, Mandarines",0.17552023,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+182,Pepper,"Oranges, Mandarines",0.14445762,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+183,Pimento,"Oranges, Mandarines",0.09685499,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+184,Pineapples and products,"Oranges, Mandarines",0.06793308,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+185,"Pulses, Other and products","Oranges, Mandarines",0.07580263,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+186,"Spices, Other","Oranges, Mandarines",0.07889235,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+187,Tomatoes and products,"Oranges, Mandarines",0.10139673,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+188,"Vegetables, Other","Oranges, Mandarines",0.07127169,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+189,Apples and products,Peas,0.064294405,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+190,Beans,Peas,0.08775858,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+191,"Citrus, Other",Peas,0.25165868,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+192,Dates,Peas,0.092574954,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+193,"Fruits, Other",Peas,0.030866543,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+194,Grapefruit and products,Peas,0.14484574,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+195,Nuts and products,Peas,0.039336767,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+196,Onions,Peas,0.08278137,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+197,"Oranges, Mandarines",Peas,0.08246293,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+198,Pepper,Peas,0.13377105,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+199,Pimento,Peas,0.08729102,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+200,"Pulses, Other and products",Peas,0.060991295,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+201,"Spices, Other",Peas,0.12065672,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+202,"Vegetables, Other",Peas,0.04677235,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+203,Apples and products,Pepper,0.03467039,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+204,Beans,Pepper,0.05868771,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+205,"Citrus, Other",Pepper,0.28665668,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+206,Grapes and products (excl wine),Pepper,0.0546477,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+207,Nuts and products,Pepper,0.027557826,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+208,Onions,Pepper,0.053278368,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+209,Apples and products,Pimento,0.0631413,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+210,Bananas,Pimento,0.080346756,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+211,Beans,Pimento,0.046626393,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+212,"Citrus, Other",Pimento,0.26897672,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+213,Dates,Pimento,0.07066517,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+214,"Fruits, Other",Pimento,0.043248016,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+215,Nuts and products,Pimento,0.039752565,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+216,"Oranges, Mandarines",Pimento,0.046899866,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+217,"Pulses, Other and products",Pimento,0.087670796,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+218,Apples and products,Pineapples and products,0.08217089,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+219,Bananas,Pineapples and products,0.06790529,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+220,Beans,Pineapples and products,0.060752906,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+221,Dates,Pineapples and products,0.050426096,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+222,"Fruits, Other",Pineapples and products,0.087548114,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+223,Grapefruit and products,Pineapples and products,0.048795916,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+224,Grapes and products (excl wine),Pineapples and products,0.09318753,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+225,Hops,Pineapples and products,0.19626653,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+226,"Lemons, Limes and products",Pineapples and products,0.036667366,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+227,Nuts and products,Pineapples and products,0.046788692,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+228,Onions,Pineapples and products,0.13148843,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+229,"Oranges, Mandarines",Pineapples and products,0.0749298,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+230,Peas,Pineapples and products,0.17135383,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+231,Pimento,Pineapples and products,0.081379704,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+232,"Pulses, Other and products",Pineapples and products,0.074269205,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+233,"Spices, Other",Pineapples and products,0.04445523,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+234,Tomatoes and products,Pineapples and products,0.048708614,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+235,"Vegetables, Other",Pineapples and products,0.033460576,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+236,Apples and products,Plantains,0.08252822,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+237,Bananas,Plantains,0.058852922,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+238,Beans,Plantains,0.09925203,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+239,"Fruits, Other",Plantains,0.045315564,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+240,Grapefruit and products,Plantains,0.13575383,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+241,Nuts and products,Plantains,0.037309367,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+242,Onions,Plantains,0.07789132,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+243,Pimento,Plantains,0.08465842,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+244,Pineapples and products,Plantains,0.05613836,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+245,"Pulses, Other and products",Plantains,0.06414816,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+246,"Spices, Other",Plantains,0.13379198,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+247,Tomatoes and products,Plantains,0.063253365,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+248,"Vegetables, Other",Plantains,0.05019194,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+249,Apples and products,"Pulses, Other and products",0.07731291,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+250,Bananas,"Pulses, Other and products",0.112553164,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+251,Beans,"Pulses, Other and products",0.07974098,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+252,Dates,"Pulses, Other and products",0.087811,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+253,"Fruits, Other","Pulses, Other and products",0.07911864,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+254,Grapefruit and products,"Pulses, Other and products",0.09137384,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+255,Grapes and products (excl wine),"Pulses, Other and products",0.07057696,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+256,"Lemons, Limes and products","Pulses, Other and products",0.085340925,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+257,Nuts and products,"Pulses, Other and products",0.07553223,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+258,Onions,"Pulses, Other and products",0.079611905,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+259,"Oranges, Mandarines","Pulses, Other and products",0.0439849,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+260,Pepper,"Pulses, Other and products",0.16122168,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+261,Pimento,"Pulses, Other and products",0.07960614,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+262,Pineapples and products,"Pulses, Other and products",0.104666896,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+263,"Spices, Other","Pulses, Other and products",0.09329644,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+264,Tomatoes and products,"Pulses, Other and products",0.07328524,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+265,"Vegetables, Other","Pulses, Other and products",0.1075835,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+266,Apples and products,"Spices, Other",0.05295732,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+267,Bananas,"Spices, Other",0.073043056,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+268,Beans,"Spices, Other",0.06550136,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+269,Dates,"Spices, Other",0.07639654,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+270,"Fruits, Other","Spices, Other",0.09286212,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+271,Grapefruit and products,"Spices, Other",0.1396218,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+272,Grapes and products (excl wine),"Spices, Other",0.06979325,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+273,Hops,"Spices, Other",0.07892588,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+274,"Lemons, Limes and products","Spices, Other",0.055803977,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+275,Nuts and products,"Spices, Other",0.051609177,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+276,Onions,"Spices, Other",0.07357119,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+277,"Oranges, Mandarines","Spices, Other",0.041218515,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+278,Peas,"Spices, Other",0.0805718,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+279,Pineapples and products,"Spices, Other",0.0936512,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+280,Plantains,"Spices, Other",0.13263248,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+281,"Pulses, Other and products","Spices, Other",0.07454589,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+282,Tomatoes and products,"Spices, Other",0.0819073,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+283,"Vegetables, Other","Spices, Other",0.10080293,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+284,Apples and products,Tomatoes and products,0.07348199,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+285,Bananas,Tomatoes and products,0.07375895,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+286,Beans,Tomatoes and products,0.08149123,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+287,Dates,Tomatoes and products,0.14908347,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+288,"Fruits, Other",Tomatoes and products,0.079320684,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+289,Grapefruit and products,Tomatoes and products,0.07991698,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+290,Grapes and products (excl wine),Tomatoes and products,0.08915145,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+291,Hops,Tomatoes and products,0.13136722,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+292,"Lemons, Limes and products",Tomatoes and products,0.05728042,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+293,Nuts and products,Tomatoes and products,0.10524343,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+294,Onions,Tomatoes and products,0.06501397,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+295,"Oranges, Mandarines",Tomatoes and products,0.13089722,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+296,Peas,Tomatoes and products,0.17843808,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+297,Pineapples and products,Tomatoes and products,0.061814677,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+298,"Pulses, Other and products",Tomatoes and products,0.081142046,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+299,"Spices, Other",Tomatoes and products,0.06508593,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+300,"Vegetables, Other",Tomatoes and products,0.070758045,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+301,Apples and products,"Vegetables, Other",0.08462614,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+302,Bananas,"Vegetables, Other",0.07718424,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+303,Beans,"Vegetables, Other",0.04915414,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+304,Dates,"Vegetables, Other",0.06833052,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+305,"Fruits, Other","Vegetables, Other",0.083078876,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+306,Grapefruit and products,"Vegetables, Other",0.06349942,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+307,Grapes and products (excl wine),"Vegetables, Other",0.07831271,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+308,"Lemons, Limes and products","Vegetables, Other",0.090895884,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+309,Nuts and products,"Vegetables, Other",0.07186134,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+310,Onions,"Vegetables, Other",0.058629725,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+311,"Oranges, Mandarines","Vegetables, Other",0.059750218,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+312,Pineapples and products,"Vegetables, Other",0.042690404,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+313,Plantains,"Vegetables, Other",0.12111522,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+314,"Pulses, Other and products","Vegetables, Other",0.042839713,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+315,Tomatoes and products,"Vegetables, Other",0.06219294,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+316,Bananas,Apples and products,0.092369944,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+317,Beans,Apples and products,0.065343134,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+318,Dates,Apples and products,0.09871773,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+319,"Fruits, Other",Apples and products,0.11732595,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+320,Grapefruit and products,Apples and products,0.07934515,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+321,Grapes and products (excl wine),Apples and products,0.15650369,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+322,Hops,Apples and products,0.20010832,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+323,"Lemons, Limes and products",Apples and products,0.12778863,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+324,Nuts and products,Apples and products,0.083257586,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+325,Onions,Apples and products,0.11763366,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+326,"Oranges, Mandarines",Apples and products,0.08199535,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+327,Peas,Apples and products,0.20109616,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+328,Pepper,Apples and products,0.1276407,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+329,Pimento,Apples and products,0.08192922,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+330,Pineapples and products,Apples and products,0.095283695,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+331,"Pulses, Other and products",Apples and products,0.09331289,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+332,"Spices, Other",Apples and products,0.08213207,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+333,Tomatoes and products,Apples and products,0.09326048,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+334,"Vegetables, Other",Apples and products,0.08266316,"Vegetables, fruit, nuts, pulses, spices",Primary crops
+335,Barley and products,"Cereals, Other",0.048303608,Cereals,Primary crops
+336,Maize and products,"Cereals, Other",0.07026739,Cereals,Primary crops
+337,Oats,"Cereals, Other",0.10163415,Cereals,Primary crops
+338,Rice and products,"Cereals, Other",0.032925017,Cereals,Primary crops
+339,Wheat and products,"Cereals, Other",0.10570784,Cereals,Primary crops
+340,Barley and products,Maize and products,0.110467404,Cereals,Primary crops
+341,Millet and products,Maize and products,0.09516804,Cereals,Primary crops
+342,Oats,Maize and products,0.09156966,Cereals,Primary crops
+343,Rice and products,Maize and products,0.04143053,Cereals,Primary crops
+344,Rye and products,Maize and products,0.08284946,Cereals,Primary crops
+345,Wheat and products,Maize and products,0.13483803,Cereals,Primary crops
+346,Barley and products,Millet and products,0.08927544,Cereals,Primary crops
+347,Maize and products,Millet and products,0.06691547,Cereals,Primary crops
+348,Oats,Millet and products,0.048078973,Cereals,Primary crops
+349,Rice and products,Millet and products,0.09014899,Cereals,Primary crops
+350,Wheat and products,Millet and products,0.038271524,Cereals,Primary crops
+351,Barley and products,Oats,0.0646269,Cereals,Primary crops
+352,Maize and products,Oats,0.090815715,Cereals,Primary crops
+353,Rice and products,Oats,0.09653347,Cereals,Primary crops
+354,Rye and products,Oats,0.17295294,Cereals,Primary crops
+355,Wheat and products,Oats,0.065705135,Cereals,Primary crops
+356,Barley and products,Rice and products,0.09914894,Cereals,Primary crops
+357,"Cereals, Other",Rice and products,0.11274573,Cereals,Primary crops
+358,Maize and products,Rice and products,0.08701997,Cereals,Primary crops
+359,Millet and products,Rice and products,0.15128322,Cereals,Primary crops
+360,Oats,Rice and products,0.0756542,Cereals,Primary crops
+361,Rye and products,Rice and products,0.08301687,Cereals,Primary crops
+362,Wheat and products,Rice and products,0.07961495,Cereals,Primary crops
+363,Barley and products,Rye and products,0.047392674,Cereals,Primary crops
+364,"Cereals, Other",Rye and products,0.15302688,Cereals,Primary crops
+365,Millet and products,Rye and products,0.09225919,Cereals,Primary crops
+366,Oats,Rye and products,0.100716986,Cereals,Primary crops
+367,Rice and products,Rye and products,0.0858851,Cereals,Primary crops
+368,Sorghum and products,Rye and products,0.16836219,Cereals,Primary crops
+369,Wheat and products,Rye and products,0.038520426,Cereals,Primary crops
+370,Barley and products,Sorghum and products,0.044765454,Cereals,Primary crops
+371,Maize and products,Sorghum and products,0.07511365,Cereals,Primary crops
+372,Oats,Sorghum and products,0.108211234,Cereals,Primary crops
+373,Rice and products,Sorghum and products,0.07390437,Cereals,Primary crops
+374,Rye and products,Sorghum and products,0.15452027,Cereals,Primary crops
+375,Wheat and products,Sorghum and products,0.06982095,Cereals,Primary crops
+376,Barley and products,Wheat and products,0.08150559,Cereals,Primary crops
+377,Maize and products,Wheat and products,0.103638895,Cereals,Primary crops
+378,Oats,Wheat and products,0.06944257,Cereals,Primary crops
+379,Rice and products,Wheat and products,0.12736809,Cereals,Primary crops
+380,Sorghum and products,Wheat and products,0.059296425,Cereals,Primary crops
+381,Beer,"Beverages, Fermented",0.062335096,Alcohol,Crop products
+382,"Beverages, Alcoholic","Beverages, Fermented",0.051779103,Alcohol,Crop products
+383,Wine,"Beverages, Fermented",0.112060025,Alcohol,Crop products
+384,"Beverages, Alcoholic",Beer,0.060888916,Alcohol,Crop products
+385,Wine,Beer,0.08143073,Alcohol,Crop products
+386,"Beverages, Alcoholic",Wine,0.08901308,Alcohol,Crop products
+387,Bovine Meat,"Meat, Other",0.056633368,Meat,Livestock products
+388,Mutton & Goat Meat,"Meat, Other",0.055402257,Meat,Livestock products
+389,Bovine Meat,Mutton & Goat Meat,0.049473427,Meat,Livestock products
+390,"Meat, Other",Mutton & Goat Meat,0.14102748,Meat,Livestock products
+391,"Offals, Edible",Mutton & Goat Meat,0.07109358,Meat,Livestock products
+392,Pigmeat,Mutton & Goat Meat,0.05513706,Meat,Livestock products
+393,Poultry Meat,Mutton & Goat Meat,0.06094622,Meat,Livestock products
+394,Bovine Meat,"Offals, Edible",0.056774728,Meat,Livestock products
+395,"Meat, Other","Offals, Edible",0.0482771,Meat,Livestock products
+396,Pigmeat,"Offals, Edible",0.093430504,Meat,Livestock products
+397,Bovine Meat,Pigmeat,0.09611209,Meat,Livestock products
+398,"Meat, Other",Pigmeat,0.072014526,Meat,Livestock products
+399,"Offals, Edible",Pigmeat,0.09115109,Meat,Livestock products
+400,Poultry Meat,Pigmeat,0.05529846,Meat,Livestock products
+401,Bovine Meat,Poultry Meat,0.07376286,Meat,Livestock products
+402,"Meat, Other",Poultry Meat,0.047946528,Meat,Livestock products
+403,Mutton & Goat Meat,Poultry Meat,0.05792951,Meat,Livestock products
+404,"Offals, Edible",Poultry Meat,0.10229265,Meat,Livestock products
+405,Pigmeat,Poultry Meat,0.0569902,Meat,Livestock products
+406,"Butter, Ghee",Milk - Excluding Butter,0.07719032,Milk,Livestock products
+407,Cassava and products,Potatoes and products,0.12849395,Roots and tubers,Primary crops
+408,Sweet potatoes,Potatoes and products,0.08891711,Roots and tubers,Primary crops
+409,Cassava and products,Sweet potatoes,0.08255016,Roots and tubers,Primary crops
+410,Potatoes and products,Sweet potatoes,0.13218614,Roots and tubers,Primary crops
+411,Cattle,Pigs,0.05146718,Live animals,Livestock
+412,Horses,Pigs,0.07917118,Live animals,Livestock
+413,Poultry Birds,Pigs,0.05720007,Live animals,Livestock
+414,Cattle,Poultry Birds,0.07691908,Live animals,Livestock
+415,Horses,Poultry Birds,0.08783727,Live animals,Livestock
+416,Pigs,Poultry Birds,0.08576215,Live animals,Livestock
+417,Sheep,Poultry Birds,0.10143768,Live animals,Livestock
+418,Cattle,Sheep,0.08429555,Live animals,Livestock
+419,Goats,Sheep,0.066863954,Live animals,Livestock
+420,Horses,Sheep,0.0798769,Live animals,Livestock
+421,Poultry Birds,Sheep,0.04788737,Live animals,Livestock
+422,"Cereals, Other",Barley and products,0.18142179,Cereals,Primary crops
+423,Maize and products,Barley and products,0.07321375,Cereals,Primary crops
+424,Millet and products,Barley and products,0.08877914,Cereals,Primary crops
+425,Oats,Barley and products,0.12383978,Cereals,Primary crops
+426,Rice and products,Barley and products,0.10182382,Cereals,Primary crops
+427,Sorghum and products,Barley and products,0.087394804,Cereals,Primary crops
+428,Wheat and products,Barley and products,0.083256066,Cereals,Primary crops
+429,Cocoa Beans and products,Coffee and products,0.09748794,"Coffee, tea, cocoa",Primary crops
+430,Coconut Oil,"Oilcrops Oil, Other",0.07268135,Vegetable oils,Crop products
+431,Groundnut Oil,"Oilcrops Oil, Other",0.111644626,Vegetable oils,Crop products
+432,Maize Germ Oil,"Oilcrops Oil, Other",0.09148036,Vegetable oils,Crop products
+433,Palm Oil,"Oilcrops Oil, Other",0.08744253,Vegetable oils,Crop products
+434,Rape and Mustard Oil,"Oilcrops Oil, Other",0.08471258,Vegetable oils,Crop products
+435,Soyabean Oil,"Oilcrops Oil, Other",0.04540846,Vegetable oils,Crop products
+436,Sunflowerseed Oil,"Oilcrops Oil, Other",0.04964359,Vegetable oils,Crop products
+437,Coconut Oil,Olive Oil,0.10366166,Vegetable oils,Crop products
+438,Maize Germ Oil,Olive Oil,0.082080945,Vegetable oils,Crop products
+439,"Oilcrops Oil, Other",Olive Oil,0.0447851,Vegetable oils,Crop products
+440,Palm Oil,Olive Oil,0.081834294,Vegetable oils,Crop products
+441,Palmkernel Oil,Olive Oil,0.05838944,Vegetable oils,Crop products
+442,Rape and Mustard Oil,Olive Oil,0.14118867,Vegetable oils,Crop products
+443,Soyabean Oil,Olive Oil,0.08073643,Vegetable oils,Crop products
+444,Sunflowerseed Oil,Olive Oil,0.1484654,Vegetable oils,Crop products
+445,Coconut Oil,Palm Oil,0.09568929,Vegetable oils,Crop products
+446,Groundnut Oil,Palm Oil,0.1045524,Vegetable oils,Crop products
+447,Maize Germ Oil,Palm Oil,0.09389036,Vegetable oils,Crop products
+448,"Oilcrops Oil, Other",Palm Oil,0.13171908,Vegetable oils,Crop products
+449,Olive Oil,Palm Oil,0.19559191,Vegetable oils,Crop products
+450,Palmkernel Oil,Palm Oil,0.076622576,Vegetable oils,Crop products
+451,Soyabean Oil,Palm Oil,0.118984364,Vegetable oils,Crop products
+452,Sunflowerseed Oil,Palm Oil,0.14259219,Vegetable oils,Crop products
+453,Coconut Oil,Palmkernel Oil,0.10330114,Vegetable oils,Crop products
+454,Groundnut Oil,Palmkernel Oil,0.15716287,Vegetable oils,Crop products
+455,Maize Germ Oil,Palmkernel Oil,0.07352336,Vegetable oils,Crop products
+456,"Oilcrops Oil, Other",Palmkernel Oil,0.05657878,Vegetable oils,Crop products
+457,Olive Oil,Palmkernel Oil,0.08434904,Vegetable oils,Crop products
+458,Coconut Oil,Rape and Mustard Oil,0.06846584,Vegetable oils,Crop products
+459,Groundnut Oil,Rape and Mustard Oil,0.096783616,Vegetable oils,Crop products
+460,Maize Germ Oil,Rape and Mustard Oil,0.08694326,Vegetable oils,Crop products
+461,"Oilcrops Oil, Other",Rape and Mustard Oil,0.07214565,Vegetable oils,Crop products
+462,Palm Oil,Rape and Mustard Oil,0.15126449,Vegetable oils,Crop products
+463,Soyabean Oil,Rape and Mustard Oil,0.07357407,Vegetable oils,Crop products
+464,Sunflowerseed Oil,Rape and Mustard Oil,0.08641852,Vegetable oils,Crop products
+465,Coconut Oil,Sesameseed Oil,0.12365386,Vegetable oils,Crop products
+466,Cottonseed Oil,Sesameseed Oil,0.25527364,Vegetable oils,Crop products
+467,Maize Germ Oil,Sesameseed Oil,0.08475074,Vegetable oils,Crop products
+468,"Oilcrops Oil, Other",Sesameseed Oil,0.076337084,Vegetable oils,Crop products
+469,Olive Oil,Sesameseed Oil,0.09184395,Vegetable oils,Crop products
+470,Palmkernel Oil,Sesameseed Oil,0.13993502,Vegetable oils,Crop products
+471,Rape and Mustard Oil,Sesameseed Oil,0.12599456,Vegetable oils,Crop products
+472,Coconut Oil,Soyabean Oil,0.074716605,Vegetable oils,Crop products
+473,Groundnut Oil,Soyabean Oil,0.12516162,Vegetable oils,Crop products
+474,Maize Germ Oil,Soyabean Oil,0.13817719,Vegetable oils,Crop products
+475,"Oilcrops Oil, Other",Soyabean Oil,0.05218104,Vegetable oils,Crop products
+476,Olive Oil,Soyabean Oil,0.11656483,Vegetable oils,Crop products
+477,Palm Oil,Soyabean Oil,0.11295645,Vegetable oils,Crop products
+478,Rape and Mustard Oil,Soyabean Oil,0.10562987,Vegetable oils,Crop products
+479,Sunflowerseed Oil,Soyabean Oil,0.086748526,Vegetable oils,Crop products
+480,Coconut Oil,Sunflowerseed Oil,0.10383165,Vegetable oils,Crop products
+481,Cottonseed Oil,Sunflowerseed Oil,0.18406832,Vegetable oils,Crop products
+482,Groundnut Oil,Sunflowerseed Oil,0.20113455,Vegetable oils,Crop products
+483,Maize Germ Oil,Sunflowerseed Oil,0.17550133,Vegetable oils,Crop products
+484,"Oilcrops Oil, Other",Sunflowerseed Oil,0.10261026,Vegetable oils,Crop products
+485,Olive Oil,Sunflowerseed Oil,0.08401624,Vegetable oils,Crop products
+486,Palm Oil,Sunflowerseed Oil,0.12858899,Vegetable oils,Crop products
+487,Palmkernel Oil,Sunflowerseed Oil,0.09477633,Vegetable oils,Crop products
+488,Soyabean Oil,Sunflowerseed Oil,0.08761737,Vegetable oils,Crop products
+489,Coconuts - Incl Copra,Sesame seed,0.10199435,Oil crops,Primary crops
+490,Groundnuts,Sesame seed,0.059075613,Oil crops,Primary crops
+491,Olives (including preserved),Sesame seed,0.058530506,Oil crops,Primary crops
+492,Sunflower seed,Sesame seed,0.06925281,Oil crops,Primary crops
+493,Coconuts - Incl Copra,Soyabeans,0.13769513,Oil crops,Primary crops
+494,Groundnuts,Soyabeans,0.042665835,Oil crops,Primary crops
+495,"Oilcrops, Other",Soyabeans,0.048624847,Oil crops,Primary crops
+496,Rape and Mustardseed,Soyabeans,0.13807431,Oil crops,Primary crops
+497,Sesame seed,Soyabeans,0.06540116,Oil crops,Primary crops
+498,Sunflower seed,Soyabeans,0.07241219,Oil crops,Primary crops
+499,Copra Cake,Cottonseed Cake,0.12424136,Oil cakes,Crop products
+500,Groundnut Cake,Cottonseed Cake,0.16387016,Oil cakes,Crop products
+501,Copra Cake,Rape and Mustard Cake,0.107922636,Oil cakes,Crop products
+502,"Oilseed Cakes, Other",Rape and Mustard Cake,0.0775743,Oil cakes,Crop products
+503,Soyabean Cake,Rape and Mustard Cake,0.072957195,Oil cakes,Crop products
+504,Copra Cake,Soyabean Cake,0.12590988,Oil cakes,Crop products
+505,"Oilseed Cakes, Other",Soyabean Cake,0.08129037,Oil cakes,Crop products
+506,Palmkernel Cake,Soyabean Cake,0.12736456,Oil cakes,Crop products
+507,Sunflowerseed Cake,Soyabean Cake,0.100153945,Oil cakes,Crop products
+508,Cotton lint,Cottonseed,0.09668925,Fibre crops,Crop products
+509,"Hard Fibres, Other",Cottonseed,0.17024249,Fibre crops,Primary crops
+510,Cotton lint,Jute,0.11982276,Fibre crops,Crop products
+511,Cottonseed Cake,Palmkernel Cake,0.13964738,Oil cakes,Crop products
+512,Soyabean Cake,Palmkernel Cake,0.079166755,Oil cakes,Crop products
+513,Goats,Camels,0.05792434,Live animals,Livestock
+514,Goats,Horses,0.14234456,Live animals,Livestock
+515,Rabbits and hares,Horses,0.35495955,Live animals,Livestock
+516,Sheep,Horses,0.10437702,Live animals,Livestock
+517,Groundnut Cake,"Oilseed Cakes, Other",0.14803943,Oil cakes,Crop products
+518,Rape and Mustard Cake,"Oilseed Cakes, Other",0.18549703,Oil cakes,Crop products
+519,Sunflowerseed Cake,"Oilseed Cakes, Other",0.1738757,Oil cakes,Crop products
+520,Groundnut Oil,Coconut Oil,0.11065267,Vegetable oils,Crop products
+521,Maize Germ Oil,Coconut Oil,0.09991249,Vegetable oils,Crop products
+522,"Oilcrops Oil, Other",Coconut Oil,0.07878322,Vegetable oils,Crop products
+523,Palm Oil,Coconut Oil,0.07238647,Vegetable oils,Crop products
+524,Palmkernel Oil,Coconut Oil,0.07412385,Vegetable oils,Crop products
+525,Rape and Mustard Oil,Coconut Oil,0.15868269,Vegetable oils,Crop products
+526,Sunflowerseed Oil,Coconut Oil,0.07897529,Vegetable oils,Crop products
+527,Groundnuts,Coconuts - Incl Copra,0.06231274,Oil crops,Primary crops
+528,"Oilcrops, Other",Coconuts - Incl Copra,0.18603332,Oil crops,Primary crops
+529,Olives (including preserved),Coconuts - Incl Copra,0.079197556,Oil crops,Primary crops
+530,Sesame seed,Coconuts - Incl Copra,0.14600089,Oil crops,Primary crops
+531,Soyabeans,Coconuts - Incl Copra,0.122999646,Oil crops,Primary crops
+532,Sunflower seed,Coconuts - Incl Copra,0.15554641,Oil crops,Primary crops
+533,Groundnuts,"Oilcrops, Other",0.05821507,Oil crops,Primary crops
+534,Olives (including preserved),"Oilcrops, Other",0.071386606,Oil crops,Primary crops
+535,Groundnuts,Rape and Mustardseed,0.12741819,Oil crops,Primary crops
+536,"Oilcrops, Other",Rape and Mustardseed,0.13405472,Oil crops,Primary crops
+537,Olives (including preserved),Rape and Mustardseed,0.08148864,Oil crops,Primary crops
+538,Sesame seed,Rape and Mustardseed,0.16929771,Oil crops,Primary crops
+539,Soyabeans,Rape and Mustardseed,0.09113849,Oil crops,Primary crops
+540,Horses,Cattle,0.105613,Live animals,Livestock
+541,Poultry Birds,Cattle,0.123297185,Live animals,Livestock
+542,Horses,Goats,0.078023545,Live animals,Livestock
+543,"Meat, Other",Bovine Meat,0.05927491,Meat,Livestock products
+544,Mutton & Goat Meat,Bovine Meat,0.113655746,Meat,Livestock products
+545,"Offals, Edible",Bovine Meat,0.058401883,Meat,Livestock products
+546,Pigmeat,Bovine Meat,0.05923733,Meat,Livestock products
+547,Poultry Meat,Bovine Meat,0.08301737,Meat,Livestock products
+548,Milk - Excluding Butter,"Butter, Ghee",0.14227507,Milk,Livestock products
+549,"Oilcrops, Other",Groundnuts,0.13618883,Oil crops,Primary crops
+550,Olives (including preserved),Groundnuts,0.08744907,Oil crops,Primary crops
+551,Rape and Mustardseed,Groundnuts,0.06299064,Oil crops,Primary crops
+552,Sesame seed,Groundnuts,0.05911559,Oil crops,Primary crops
+553,Soyabeans,Groundnuts,0.07700253,Oil crops,Primary crops
+554,"Oilcrops, Other",Sunflower seed,0.07534691,Oil crops,Primary crops
+555,Rape and Mustardseed,Sunflower seed,0.12131532,Oil crops,Primary crops
+556,Soyabeans,Sunflower seed,0.05521289,Oil crops,Primary crops
+557,Olive Oil,Maize Germ Oil,0.094018795,Vegetable oils,Crop products
+558,Rape and Mustard Oil,Maize Germ Oil,0.08128025,Vegetable oils,Crop products
+559,Soyabean Oil,Maize Germ Oil,0.053563487,Vegetable oils,Crop products
+560,Sunflowerseed Oil,Maize Germ Oil,0.09179571,Vegetable oils,Crop products
+561,Potatoes and products,Cassava and products,0.10072989,Roots and tubers,Primary crops
+562,Sweet potatoes,Cassava and products,0.22266385,Roots and tubers,Primary crops
+563,Rape and Mustard Cake,Sunflowerseed Cake,0.17775677,Oil cakes,Crop products
+564,Soyabean Cake,Sunflowerseed Cake,0.097412795,Oil cakes,Crop products
+565,Rape and Mustardseed,Olives (including preserved),0.10480109,Oil crops,Primary crops
+566,Sesame seed,Olives (including preserved),0.06486419,Oil crops,Primary crops
+567,Soyabeans,Olives (including preserved),0.091371424,Oil crops,Primary crops
+568,Sunflower seed,Olives (including preserved),0.097026095,Oil crops,Primary crops
+569,Rape and Mustardseed,Palm kernels,0.12264243,Oil crops,Primary crops
+570,Sesame seed,Palm kernels,0.06388645,Oil crops,Primary crops
+571,Soyabean Oil,Cottonseed Oil,0.050320208,Vegetable oils,Crop products
+572,Sugar (Raw Equivalent),"Sweeteners, Other",0.0789129,"Sugar, sweeteners",Crop products
+573,Sunflowerseed Oil,Groundnut Oil,0.10448603,Vegetable oils,Crop products
+574,"Sweeteners, Other",Sugar (Raw Equivalent),0.10259804,"Sugar, sweeteners",Crop products
+575,Tobacco,Rubber,0.04137945,"Tobacco, rubber",Primary crops
+576,Wine,"Beverages, Alcoholic",0.08365569,Alcohol,Crop products
+577,Wool (Clean Eq.),Silk,0.094576575,"Hides, skins, wool",Livestock products
