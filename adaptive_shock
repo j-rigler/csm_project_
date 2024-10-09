@@ -10,6 +10,9 @@ output_folder = './results/'        # folder to write results to
 
 tau = 10                            # number of iterations
 compensation=True                   # turn adaptation on
+limit_abs_sim=1000                  # event limits
+limit_rel_sim=0.26
+limit_dev_sim=0.32
 
 ### IMPORT ###
 
