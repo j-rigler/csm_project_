@@ -24,8 +24,8 @@ import numpy as np
 ### LOADING DATA ###
 
 # Load information
-io_codes = pd.read_csv(folder+'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
-su_codes = pd.read_csv(folder+'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
+io_codes = pd.read_csv(input_folder+'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
+su_codes = pd.read_csv(input_folder+'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
 
 # Create single indexes
 areas = np.array(sorted(set(io_codes['area'])))
@@ -36,13 +36,13 @@ processes = np.array(sorted(set(su_codes['proc'])))
 ai_index = pd.MultiIndex.from_product([areas, items])
 ap_index = pd.MultiIndex.from_product([areas, items])
 
-# Load  further information on countries
-c_frame = pd.read_csv(input_folder+'country-information.csv',index_col=[2])
+# Load  further information on areas (countries)
+a_frame = pd.read_csv(folder+'a_frame.csv')
 
 # Counting
 Ni = len(items)         # number of items
 Np = len(processes)     # number of processes
-Na = len(countries)     # number of countries
+Na = len(areas)         # number of countries
 
 # Create a vector of all ones for summation
 one_vec_proc = sprs.csr_matrix(np.ones(Na*Np))
@@ -96,10 +96,10 @@ producer = pd.DataFrame(producer, index=ci_index, columns=['is_producer'])
 # Load transitions
 for v in ['import','export','alpha','beta','nu','eta_exp','eta_prod','eta_cons']:
         # Load transitions
-        globals()['transition_'+v+'_multi'] = sprs.load_npz(folder+'transition_'+v+'_multi.npz')
+        globals()['transition_'+v+'_multi'] = sprs.load_npz(input_folder+'transition_'+v+'_multi.npz')
         globals()['transition_'+v+'_multi'].data[globals()['transition_'+v+'_multi'].data<0]=0
 
-        globals()['transition_'+v+'_rewire'] = sprs.load_npz(folder+'transition_'+v+'_rewire.npz')
+        globals()['transition_'+v+'_rewire'] = sprs.load_npz(input_folder+'transition_'+v+'_rewire.npz')
         globals()['transition_'+v+'_rewire'].data[globals()['transition_'+v+'_rewire'].data<0]=0
         
         # Kick-Out all zero entries
@@ -107,7 +107,7 @@ for v in ['import','export','alpha','beta','nu','eta_exp','eta_prod','eta_cons']
         globals()['transition_'+v+'_rewire'].eliminate_zeros()
 
 #  Load subsitutability index
-substitutability_trade = sprs.load_npz(folder+'substitutability_trade.npz')
+substitutability_trade = sprs.load_npz(input_folder+'substitutability_trade.npz')
 substitutability_trade.eliminate_zeros()
 
 ### SIMULATION: BASELINE ###
@@ -248,9 +248,12 @@ for ait, a_shock in enumerate(areas):
             XS.loc[idx[:,:],(a_shock,i_shock)] = xbase
 
     # Save
-    XS.to_csv(output_folder+c_frame.loc[a_shock,'code']+'.csv')
+    if compensation:
+        XS.to_csv(output_folder+a_frame.loc[a_shock,'code']+'_comp.csv')
+    else:
+        XS.to_csv(output_folder+a_frame.loc[a_shock,'code']+'_no_comp.csv')
 
     # Progress
-    print(f'Shocked Scenario: {100*cit/len(countries):.2f}%',end='\r')
+    print(f'Shocked Scenario: {100*ait/Na:.2f}%',end='\r')
 
 print(f'Shocked scenario done')
