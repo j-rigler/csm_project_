@@ -9,4 +9,4 @@ The code loss_calculations determines the relative losses, absolute losses and a
 
 All necessary input for both codes, can be found in the folder /input.
 
-In the folder /substitution, you find a summary of all substitution relationships as a table and visualized matrices for all subgroups.
+In the folder /substitution, you find a summary of all substitution indexes as a table and visualized matrices for all subgroups, derived according to 4.4.5 Item substitutability.
