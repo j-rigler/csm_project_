@@ -1,7 +1,7 @@
 # adaptive_food_supply_network
 
 This repository contains the code for the paper Baum, Laber, Bruckner, Yang, Thurner, Klimek (2024) Adaptive Shock Compensation in the Multilayer Network of Global Food Production and Trade.
-
+(https://arxiv.org/abs/2411.03502)
 
 With the code adaptive_shock, you can run and save all possible shock scenarios in one go with the adaptation either switched on or off.
 
