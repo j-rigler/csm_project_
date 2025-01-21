@@ -163,13 +163,23 @@ for ait, a_shock in enumerate(areas):
             shock_id = list(ai_index.values).index((a_shock,i_shock))
 
             # Initialize
-            xs = sprs.csr_matrix((Na*Ni,1))
+            xs_timetrace = np.zeros((Na*Ni, tau))
+            rl_timetrace = np.zeros((Na*Ni, tau))
+            al_timetrace = np.zeros((Na*Ni, tau))
             xs = x0
+
+            alpha_shock = alpha.copy()
+            beta_shock = beta.copy()
+            nu_shock = nu.copy()
+            eta_exp_shock = eta_exp.copy()
+            eta_prod_shock = eta_prod.copy()
+            eta_cons_shock = eta_cons.copy()
+            T_shock = T.copy()
 
             for t in range(0,tau):
 
                 # Production
-                o = (alpha @ (nu @ (eta_prod.multiply(xs))) + (beta @ one_vec_proc))
+                o = (alpha_shock @ (nu_shock @ (eta_prod_shock.multiply(xs))) + (beta_shock @ one_vec_proc))
                 
                 # Start Stock
                 if t == 0:
@@ -179,10 +189,12 @@ for ait, a_shock in enumerate(areas):
                 o[shock_id] = 0
                 
                 # Trade
-                h =  T @ (eta_exp.multiply(xs))
+                h =  T_shock @ (eta_exp_shock.multiply(xs))
                 
                 # Summation 
                 xs = o + h
+
+                xs_timetrace[:, t] = xs.toarray()[:, 0]
 
                 # Relative loss
                 rl = sprs.csr_matrix(np.nan_to_num(1-xs/sprs.csr_matrix(x_timetrace_base[:, t]).T, nan = 0))
@@ -246,6 +258,7 @@ for ait, a_shock in enumerate(areas):
                     mask_subs_3 = (T_shock.sum(axis = 0).A1>0) & ((T_shock.sum(axis = 0).A1<0.99) | (T_shock.sum(axis = 0).A1>1.01))
                     T_shock[:, mask_subs_3] = T_shock[:, mask_subs_3] / T_shock.sum(axis = 0).A1[mask_subs_3]
 
+            XS.loc[idx[:,:],(a_shock,i_shock)] = xs
         
         else:
             XS.loc[idx[:,:],(a_shock,i_shock)] = xbase
