@@ -9,12 +9,14 @@ input_folder = './input/'           # folder with parameters and input data
 output_folder = './results/'        # folder to write results to
 
 tau = 10                            # number of iterations
-compensation=True                   # turn adaptation on
+compensation=False                   # turn adaptation on
 limit_abs_sim=1000                  # event limits
 limit_rel_sim=0.26
 limit_dev_sim=0.32
 
 ### IMPORT ###
+import warnings
+warnings.filterwarnings("ignore")
 
 import pandas as pd
 from pandas import IndexSlice as idx
@@ -40,7 +42,7 @@ ai_index = pd.MultiIndex.from_product([areas, items])
 ap_index = pd.MultiIndex.from_product([areas, items])
 
 # Load  further information on areas (countries)
-a_frame = pd.read_csv(folder+'a_frame.csv')
+a_frame = pd.read_csv(input_folder+'a_frame.csv')
 
 # Counting
 Ni = len(items)         # number of items
@@ -89,10 +91,10 @@ T.eliminate_zeros()
 nu.eliminate_zeros()
 
 # Determine countries that are producers of specific items
-producer = (alpha@one_vec) + (beta@one_vec)
+producer = (alpha@one_vec_proc) + (beta@one_vec_proc)
 producer = producer.toarray()
 producer = producer>0
-producer = pd.DataFrame(producer, index=ci_index, columns=['is_producer'])
+producer = pd.DataFrame(producer, index=ai_index, columns=['is_producer'])
 
 #Load adaptation rules
 
@@ -134,7 +136,7 @@ for t in range(0,tau):
 
 # Store
 xbase = x.toarray()[:,0]
-X = pd.DataFrame(xbase,index=ci_index,columns=['base'])
+X = pd.DataFrame(xbase,index=ai_index,columns=['base'])
 X.index.names = ['area','item']
 X.columns.names = ['scenario']
 
@@ -258,16 +260,17 @@ for ait, a_shock in enumerate(areas):
                     mask_subs_3 = (T_shock.sum(axis = 0).A1>0) & ((T_shock.sum(axis = 0).A1<0.99) | (T_shock.sum(axis = 0).A1>1.01))
                     T_shock[:, mask_subs_3] = T_shock[:, mask_subs_3] / T_shock.sum(axis = 0).A1[mask_subs_3]
 
-            XS.loc[idx[:,:],(a_shock,i_shock)] = xs
+            XS.loc[idx[:,:],(a_shock,i_shock)] = xs.toarray()
         
         else:
             XS.loc[idx[:,:],(a_shock,i_shock)] = xbase
 
     # Save
+    a_shock_index = a_frame[a_frame['area'] == a_shock].index[0]
     if compensation:
-        XS.to_csv(output_folder+a_frame.loc[a_shock,'code']+'_comp.csv')
+        XS.to_csv(output_folder+a_frame.loc[a_shock_index,'code']+'_comp.csv')
     else:
-        XS.to_csv(output_folder+a_frame.loc[a_shock,'code']+'_no_comp.csv')
+        XS.to_csv(output_folder+a_frame.loc[a_shock_index,'code']+'_no_comp.csv')
 
     # Progress
     print(f'Shocked Scenario: {100*ait/Na:.2f}%',end='\r')
