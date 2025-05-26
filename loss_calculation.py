@@ -1,7 +1,7 @@
 ############## SHOCK ADAPTATION FOOD SUPPLY MODEL #############
 #
 #
-#  SOPHIA BAUM - 2024
+#  SOPHIA BAUM - 2024 und Lena Mair
 
 ### PARAMETERS ###
 
