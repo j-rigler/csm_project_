@@ -1,7 +1,7 @@
 ############## SHOCK ADAPTATION FOOD SUPPLY MODEL #############
 #
 #
-#  SOPHIA BAUM - 2024 und Lena Mair
+#  SOPHIA BAUM - 2024 und Lena Mair test2
 
 ### PARAMETERS ###
 
@@ -10,6 +10,7 @@ output_folder =  './results/'             # folder to write results to
 losses = './evaluation/'                  # folder to store the refined results to
 
 a_shock = 'India'
+x=5 
 
 ### IMPORT ###
 
