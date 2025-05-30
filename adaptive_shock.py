@@ -9,7 +9,7 @@ input_folder = './input/'           # folder with parameters and input data
 output_folder = './results/'        # folder to write results to
 
 tau = 10                            # number of iterations
-compensation=False                   # turn adaptation on
+compensation=True                  # turn adaptation on
 limit_abs_sim=1000                  # event limits
 limit_rel_sim=0.26
 limit_dev_sim=0.32
@@ -211,8 +211,8 @@ for ait, a_shock in enumerate(areas):
         
                 if t == 1 and compensation:
         
-                    change_rl = set(np.where(rl.toarray()[:,0]>=rl_shock)[0])
-                    change_al = set(np.where(al.toarray()[:,0]>=al_shock)[0])
+                    change_rl = set(np.where(rl.toarray()[:,0]>=limit_rel_sim)[0]) #rl_shock
+                    change_al = set(np.where(al.toarray()[:,0]>=limit_abs_sim)[0]) #al_shock
                     change = np.array(list(change_rl.intersection(change_al)))
                     mask = np.isin(np.arange(Na*Ni), change)
         
@@ -248,8 +248,8 @@ for ait, a_shock in enumerate(areas):
         
                 if t == 2 and compensation:
         
-                    change_rl = set(np.where(rl.toarray()[:,0]>=rl_shock)[0])
-                    change_al = set(np.where(al.toarray()[:,0]>=al_shock)[0])
+                    change_rl = set(np.where(rl.toarray()[:,0]>=limit_rel_sim)[0])
+                    change_al = set(np.where(al.toarray()[:,0]>=limit_abs_sim)[0])
                     change = np.array(list(change_rl.intersection(change_al)))
                     mask_subs = np.isin(np.arange(Na*Ni), change)
         
