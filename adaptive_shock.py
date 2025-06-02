@@ -16,7 +16,7 @@ limit_abs_sim = 1000                # event limits
 limit_rel_sim = 0.26
 limit_dev_sim = 0.32
 
-shock_intensities = [0,0.5,0.2,0.6,0.8,0.1,0.2,0.1,0.4,0.3]
+shock_scaling = [0, 0.5, 0.2, 0.6, 0.8, 0.1, 0.2, 0.1, 0.4, 0.3]
 
 
 ### IMPORT ###
@@ -131,7 +131,7 @@ x_timetrace_base = np.zeros((Na * Ni, tau))
 x = x0                          
 
 # Iterate dynamics
-for t in range(0,tau):          
+for t in range(tau):          
 
     x = (alpha @ (nu @ (eta_prod.multiply(x))) + (beta @ one_vec_proc))  + T @ (eta_exp.multiply(x))
 
@@ -147,7 +147,7 @@ X.index.names    = ['area', 'item']
 X.columns.names  = ['scenario']
 
 # save
-X.to_csv(output_folder + 'base.csv')
+#X.to_csv(output_folder + 'base.csv')
 
 # output
 print('Baseline scenario done.')
@@ -194,8 +194,8 @@ for ait, a_shock in enumerate(areas):
                 if t == 0:
                     o = o + xstartstock
                
-                # Apply shock: outcome of o=(1 - phi)*o, here phi=shock_intensities[t]
-                o[shock_id] = shock_intensities[t]*o[shock_id]
+                # Apply shock: outcome of o = (1 - phi)*o, shock_scaling[t] = 1 - phi[t]
+                o[shock_id] = shock_scaling[t]*o[shock_id]
                 
                 # Trade
                 h = T_shock @ (eta_exp_shock.multiply(xs))
@@ -218,8 +218,8 @@ for ait, a_shock in enumerate(areas):
         
                 if t == 1 and compensation:
         
-                    change_rl = set(np.where(rl.toarray()[:,0] >= limit_rel_sim)[0]) #rl_shock
-                    change_al = set(np.where(al.toarray()[:,0] >= limit_abs_sim)[0]) #al_shock
+                    change_rl = set(np.where(rl.toarray()[:,0] > limit_rel_sim)[0]) #rl_shock
+                    change_al = set(np.where(al.toarray()[:,0] > limit_abs_sim)[0]) #al_shock
                     change    = np.array(list(change_rl.intersection(change_al)))
                     mask      = np.isin(np.arange(Na * Ni), change)
         
