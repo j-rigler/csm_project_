@@ -10,7 +10,7 @@ input_folder  = './input/'               # folder with parameters
 output_folder = './results/'             # folder to write results to
 losses        = './evaluation/'          # folder to store the refined results to
 
-a_shock = 'Portugal'
+a_shock = 'combined_shocks'
 
 
 ### IMPORT ###
@@ -43,10 +43,9 @@ ap_index = pd.MultiIndex.from_product([areas, items])
 a_frame  = pd.read_csv(input_folder + 'a_frame.csv')
 
 # Load the results of the simulation
-a_shock_index = a_frame[a_frame['area'] == a_shock].index[0]
 
-X_base     = pd.read_csv(output_folder + 'base.csv', index_col = [0, 1], header = [0])
-XS_comp    = pd.read_csv(output_folder + a_frame.loc[a_shock_index, 'code'] + '_comp.csv',    index_col = [0,1], header = [0,1])
+X_base     = pd.read_csv(output_folder + 'base.csv',            index_col = [0, 1], header = [0])
+XS_comp    = pd.read_csv(output_folder + 'combined_shocks.csv', index_col = [0, 1], header = [0])
 #XS_no_comp = pd.read_csv(output_folder + a_frame.loc[a_shock_index, 'code'] + '_no_comp.csv', index_col = [0,1], header = [0,1])
 
 
@@ -56,47 +55,45 @@ XS_comp    = pd.read_csv(output_folder + a_frame.loc[a_shock_index, 'code'] + '_
 #RL_no_comp = XS_no_comp.copy()
 RL_comp    = XS_comp.copy()
 
-for col in XS_comp.columns:
-    #RL_no_comp[col] = ((X_base['base'] - #RL_no_comp[col]) / X_base['base']).fillna(0)
-    RL_comp   [col] = ((X_base['base'] - RL_comp[col])    / X_base['base']).fillna(0)  
+
+#RL_no_comp[col] = ((X_base['base'] - #RL_no_comp[col]) / X_base['base']).fillna(0)
+RL_comp   ['combined_shocks'] = ((X_base['base'] - RL_comp['combined_shocks']) / X_base['base']).fillna(0)  
 
 #RL_no_comp[#RL_no_comp < -1] = -1
-RL_comp   [RL_comp    < -1] = -1
+RL_comp = RL_comp.clip(lower=-1)
 
 # Setup a dataframe for the relative loss
 #RL_no_comp.columns       = pd.MultiIndex.from_product([[a_shock], items])
 #RL_no_comp.columns.names = ['a_shock', 'i_shock']
 #RL_no_comp.index.names   = ['a_receive', 'i_receive'] 
 
-RL_comp.columns          = pd.MultiIndex.from_product([[a_shock], items])
-RL_comp.columns.names    = ['a_shock', 'i_shock']
+RL_comp.columns          = ['combined_shocks']
 RL_comp.index.names      = ['a_receive', 'i_receive'] 
 
 # Save
 #RL_no_comp.to_csv(losses + 'RL-' + a_frame.loc[a_shock, 'code'] + '_no_comp.csv')
-RL_comp.to_csv   (losses + 'RL-' + a_frame.loc[a_shock_index, 'code'] + '_comp.csv')
+RL_comp.to_csv   (losses + 'RL-combined_shocks_comp.csv')
 
 
 # Compute absolute loss
 #AL_no_comp = XS_no_comp.copy()
 AL_comp    = XS_comp.copy()
 
-for col in XS_comp.columns:
-    #AL_no_comp[col] = X_base['base'] - XS_no_comp[col]
-    AL_comp[col]    = X_base['base'] - XS_comp[col]
+
+#AL_no_comp[col] = X_base['base'] - XS_no_comp[col]
+AL_comp['combined_shocks']    = X_base['base'] - AL_comp['combined_shocks']
 
 # Setup a dataframe for the absolute loss
 #AL_no_comp.columns       = pd.MultiIndex.from_product([[a_shock], items])
 #AL_no_comp.columns.names = ['a_shock', 'i_shock']
 #AL_no_comp.index.names   = ['a_receive', 'i_receive'] 
 
-AL_comp.columns          = pd.MultiIndex.from_product([[a_shock], items])
-AL_comp.columns.names    = ['a_shock', 'i_shock']
+AL_comp.columns          = ['combined_shocks']
 AL_comp.index.names      = ['a_receive', 'i_receive']  
 
 # Save
 #AL_no_comp.to_csv(losses + 'AL-' + a_frame.loc[a_shock,'code'] + '_no_comp.csv')
-AL_comp.to_csv   (losses + 'AL-' + a_frame.loc[a_shock_index,'code'] + '_comp.csv')
+AL_comp.to_csv   (losses + 'AL-combined_shocks_comp.csv')
 
 
 
@@ -125,4 +122,4 @@ AL_comp_pc.index.names      = ['a_receive', 'i_receive']
 
 # Save
 #AL_no_comp_pc.to_csv(losses + 'AL_pc-' + a_frame.loc[a_shock, 'code'] + '_no_comp.csv')
-AL_comp_pc.to_csv(   losses + 'AL_pc-' + a_frame.loc[a_shock_index, 'code'] + '_comp.csv')
+#AL_comp_pc.to_csv(   losses + 'AL_pc-' + a_frame.loc[a_shock_index, 'code'] + '_comp.csv')
