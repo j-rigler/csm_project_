@@ -1,14 +1,14 @@
 ############## SHOCK ADAPTATION FOOD SUPPLY MODEL #############
 #
 #
-#  ADAPTED BY CSM_SEXY_GRP_ 2025, ORIGIN: SOPHIA BAUM - 2024
+#  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
 ### PARAMETERS ###
 
-input_folder  = './input/'               # folder with parameters
-output_folder = './results/'             # folder to write results to
-losses        = './evaluation/'          # folder to store the refined results to
+input_folder  = './input/'               # Folder with parameters
+output_folder = './results/'             # Folder to write results to
+losses        = './evaluation/'          # Folder to store the refined results to
 
 
 ### IMPORT ###
@@ -20,7 +20,6 @@ import scipy.io as io
 import scipy.sparse as sprs
 
 import numpy as np
-from loss_calculation_header import*
 
 
 ### LOADING DATA ###
@@ -31,8 +30,9 @@ XS_comp = pd.read_csv(output_folder + 'combined_shocks_comp.csv', index_col = [0
 
 ### COMPUTATIONS ###
 
-AL_comp = compute_losses(X_base, XS_comp)
-save_calculation(losses, AL_comp)
+x_i = XS_comp['combined_shocks'] # Extract values to transform
 
-RL_comp = compute_losses(X_base, XS_comp, relative = True)
-save_calculation(losses, RL_comp, relative = True)
+XS_comp['absolute_losses'] = (X_base['base'] - x_i).fillna(0)                       # Absolute loss calculation
+XS_comp['relative_losses'] = (1 - x_i / X_base['base']).fillna(0).clip(lower = -1)  # Realative loss calculation and Manipulation
+
+XS_comp.to_csv(losses + 'Losses-combined_shocks_comp.csv')
