@@ -49,5 +49,23 @@ fix compiler errors in 'loss_calculation.py':
     comment out all 'no_comp_' objects
     102: quit(), leave out per capita evaluation
 
+02.06
+change adaptive_shock.py & loss_calc.py to combined event scenario
+toDo: adaptive_shock.py: necessity of 'is_producer' check
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

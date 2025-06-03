@@ -1,7 +1,7 @@
 ############## SHOCK ADAPTATION FOOD SUPPLY MODEL #############
 #
 #
-#  SOPHIA BAUM - 2024
+#  ADAPTED BY CSM_SEXY_GRP_ 2025, ORIGINAL: SOPHIA BAUM - 2024
 
 
 ### PARAMETERS ###
@@ -9,8 +9,6 @@
 input_folder  = './input/'               # folder with parameters
 output_folder = './results/'             # folder to write results to
 losses        = './evaluation/'          # folder to store the refined results to
-
-a_shock = 'combined_shocks'
 
 
 ### IMPORT ###
@@ -35,17 +33,16 @@ areas     = np.array(sorted(set(io_codes['area'])))
 items     = np.array(sorted(set(io_codes['item'])))
 processes = np.array(sorted(set(su_codes['proc'])))
 
-# Create multi indexes
+# Create multi index
 ai_index = pd.MultiIndex.from_product([areas, items])
-ap_index = pd.MultiIndex.from_product([areas, items])
 
 # Load further information on countries
 a_frame  = pd.read_csv(input_folder + 'a_frame.csv')
 
 # Load the results of the simulation
 
-X_base     = pd.read_csv(output_folder + 'base.csv',            index_col = [0, 1], header = [0])
-XS_comp    = pd.read_csv(output_folder + 'combined_shocks.csv', index_col = [0, 1], header = [0])
+X_base  = pd.read_csv(output_folder + 'base.csv',                 index_col = [0, 1], header = [0])
+XS_comp = pd.read_csv(output_folder + 'combined_shocks_comp.csv', index_col = [0, 1], header = [0])
 #XS_no_comp = pd.read_csv(output_folder + a_frame.loc[a_shock_index, 'code'] + '_no_comp.csv', index_col = [0,1], header = [0,1])
 
 
@@ -53,14 +50,13 @@ XS_comp    = pd.read_csv(output_folder + 'combined_shocks.csv', index_col = [0, 
 
 # Compute relative loss
 #RL_no_comp = XS_no_comp.copy()
-RL_comp    = XS_comp.copy()
-
+RL_comp = XS_comp.copy()
 
 #RL_no_comp[col] = ((X_base['base'] - #RL_no_comp[col]) / X_base['base']).fillna(0)
-RL_comp   ['combined_shocks'] = ((X_base['base'] - RL_comp['combined_shocks']) / X_base['base']).fillna(0)  
+RL_comp['combined_shocks'] = (1 - RL_comp['combined_shocks'] / X_base['base']).fillna(0)  
 
 #RL_no_comp[#RL_no_comp < -1] = -1
-RL_comp = RL_comp.clip(lower=-1)
+RL_comp = RL_comp.clip(lower = -1)
 
 # Setup a dataframe for the relative loss
 #RL_no_comp.columns       = pd.MultiIndex.from_product([[a_shock], items])
