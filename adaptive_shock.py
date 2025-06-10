@@ -54,7 +54,6 @@ processes = np.array(sorted(set(su_codes['proc'])))
 event_areas = np.array(sorted(set(food_production_data['Area'])))
 event_items = np.array(sorted(set(food_production_data['Item'])))
 years       = np.array(sorted(set(food_production_data['Year'])))
-elements    = np.array(sorted(set(food_production_data['Element'])))
 
 
 # Create multi indexes
@@ -62,7 +61,7 @@ ai_index = pd.MultiIndex.from_product([areas, items])
 ap_index = pd.MultiIndex.from_product([areas, processes])
 
 #Create multi indices for event data
-ai_e_index = pd.MultiIndex.from_product([event_areas, event_items, elements])
+ai_e_index = pd.MultiIndex.from_product([event_areas, event_items])
 
 # Scale of the shocks
 shock_scaling = food_production_data['Relative Difference'].values
@@ -173,9 +172,13 @@ X.to_csv(output_folder + 'base.csv')
 # output
 print('Baseline scenario done.')
 
-valid_ids_set = set(X['item'].unique())
+#filter for items used in paper
+valid_ids_set = set(X.index.get_level_values('item').unique())
 
-food_prouction_data = food_production_data['Item'].isnin(valid_ids_set)
+# Corrected line: Use .isin() to filter for items present in valid_ids_set
+food_production_data = food_production_data[food_production_data['Item'].isin(valid_ids_set)]
+
+food_production_data.to_csv(data_folder + 'fao_data/fao_all_with_coords_filtered.csv', index=False)
 
 # quit() at this point
 ### SIMULATION: SHOCK ADAPTATION ###
@@ -208,7 +211,6 @@ start_time = time.time()
 
 for t in range(tau):
     # Calculate remaining loops
-    remaining = tau - t - 1
 
     # Production
     o = (alpha_shock @ (nu_shock @ (eta_prod_shock.multiply(xs))) + (beta_shock @ one_vec_proc))
