@@ -30,11 +30,6 @@ gdf = gpd.read_file("data/world-administrative-boundaries/world-administrative-b
 print(gdf.crs)
 
 
-# In[47]:
-fao_disaster_HornofAfrica = pd.read_csv("data/fao_data/Horn of Africa 2019-2023_FAOSTAT_data_en_6-3-2025(1).csv")
-fao_disaster_Pakistan = pd.read_csv("data/fao_data/Pakistan 2021-2022_FAOSTAT_data_en_6-3-2025(2).csv")
-fao_disaster_Ururguay = pd.read_csv("data/fao_data/Uruguay 2021-2023_FAOSTAT_data_en_6-3-2025(1).csv")
-
 
 # In[48]:
 
@@ -110,18 +105,18 @@ fao_all_Norm.to_csv("data/fao_data/fao_all_with_coords.csv", index=False)
 # In[57]:
 
 
-str(filtered_event['Geometry'])
+str(fao_all_Norm['Geometry'])
 
 # Convert string → tuple
-filtered_event['Geometry'] = filtered_event['Geometry'].apply(
+fao_all_Norm['Geometry'] = filtered_event['Geometry'].apply(
     lambda x: ast.literal_eval(x) if isinstance(x, str) else x
 )
 
 # Convert tuple (lat, lon) → Point(lon, lat)
-filtered_event['geometry'] = filtered_event['Geometry'].apply(lambda coords: Point(coords[1], coords[0]) if coords != (None, None) else None)
+fao_all_Norm['geometry'] = filtered_event['Geometry'].apply(lambda coords: Point(coords[1], coords[0]) if coords != (None, None) else None)
 
 # Create GeoDataFrame
-fitlered_event_geo = gpd.GeoDataFrame(filtered_event, geometry='geometry', crs="EPSG:4326")
+fao_all_Norm_geo = gpd.GeoDataFrame(filtered_event, geometry='geometry', crs="EPSG:4326")
 
 
 # In[58]:
