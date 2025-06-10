@@ -18,6 +18,7 @@ limit_abs_sim = 1000                # event limits
 limit_rel_sim = 0.26
 limit_dev_sim = 0.32
 
+
 #shock_scaling   = [0, 0.5, 0.2, 0.6, 0.8, 0.1, 0.2, 0.1, 0.4, 0.3]
 #combined_shocks = [('Pakistan','Rice and products'), ('India', 'Rice and products')]
 
@@ -40,7 +41,10 @@ import time
 # Load information
 io_codes = pd.read_csv(input_folder+'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
 su_codes = pd.read_csv(input_folder+'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
-event_data = pd.read_csv(data_folder+'fao_data/filtered_event.csv')
+event_data = pd.read_csv(data_folder+'fao_data/fao_all_with_coords.csv')
+
+event_data = event_data[event_data['Year']>1992]
+event_data.to_csv(data_folder+'fao_data/fao_all_with_coords.csv', index=False)
 
 # Create single indexes
 areas     = np.array(sorted(set(io_codes['area'])))
@@ -51,6 +55,8 @@ processes = np.array(sorted(set(su_codes['proc'])))
 # Create single indices for the event data
 event_areas = np.array(sorted(set(event_data['Area'])))
 event_items = np.array(sorted(set(event_data['Item'])))
+years       = np.array(sorted(set(event_data['Year'])))
+elements    = np.array(sorted(set(event_data['Element'])))
 
 
 # Create multi indexes
@@ -58,7 +64,7 @@ ai_index = pd.MultiIndex.from_product([areas, items])
 ap_index = pd.MultiIndex.from_product([areas, processes])
 
 #Create multi indices for event data
-ai_e_index = pd.MultiIndex.from_product([event_areas, event_items])
+ai_e_index = pd.MultiIndex.from_product([event_areas, event_items, elements])
 
 # Scale of the shocks
 shock_scaling = event_data['Relative Difference'].values

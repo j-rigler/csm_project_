@@ -96,10 +96,6 @@ AL_comp.index.names      = ['a_receive', 'i_receive']
 AL_comp.to_csv   (losses + 'AL-combined_shocks_comp.csv')
 
 
-
-
-
-
 quit()
 # Compute absolute loss per capita
 #AL_no_comp_pc = #AL_no_comp.reset_index().merge(a_frame.loc[:, 'population'], left_on = 'level_0',right_index = True)
