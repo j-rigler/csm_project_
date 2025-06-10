@@ -41,10 +41,8 @@ import time
 # Load information
 io_codes = pd.read_csv(input_folder+'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
 su_codes = pd.read_csv(input_folder+'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
-event_data = pd.read_csv(data_folder+'fao_data/fao_all_with_coords.csv')
+food_production_data = pd.read_csv(data_folder+'fao_data/fao_all_with_coords.csv')
 
-event_data = event_data[event_data['Year']>1992]
-event_data.to_csv(data_folder+'fao_data/fao_all_with_coords.csv', index=False)
 
 # Create single indexes
 areas     = np.array(sorted(set(io_codes['area'])))
@@ -53,10 +51,10 @@ processes = np.array(sorted(set(su_codes['proc'])))
 
 
 # Create single indices for the event data
-event_areas = np.array(sorted(set(event_data['Area'])))
-event_items = np.array(sorted(set(event_data['Item'])))
-years       = np.array(sorted(set(event_data['Year'])))
-elements    = np.array(sorted(set(event_data['Element'])))
+event_areas = np.array(sorted(set(food_production_data['Area'])))
+event_items = np.array(sorted(set(food_production_data['Item'])))
+years       = np.array(sorted(set(food_production_data['Year'])))
+elements    = np.array(sorted(set(food_production_data['Element'])))
 
 
 # Create multi indexes
@@ -67,7 +65,7 @@ ap_index = pd.MultiIndex.from_product([areas, processes])
 ai_e_index = pd.MultiIndex.from_product([event_areas, event_items, elements])
 
 # Scale of the shocks
-shock_scaling = event_data['Relative Difference'].values
+shock_scaling = food_production_data['Relative Difference'].values
 
 # Load  further information on areas (countries)
 a_frame = pd.read_csv(input_folder+'a_frame.csv')
@@ -175,6 +173,10 @@ X.to_csv(output_folder + 'base.csv')
 # output
 print('Baseline scenario done.')
 
+valid_ids_set = set(X['item'].unique())
+
+food_prouction_data = food_production_data['Item'].isnin(valid_ids_set)
+
 # quit() at this point
 ### SIMULATION: SHOCK ADAPTATION ###
 
@@ -208,7 +210,6 @@ for t in range(tau):
     # Calculate remaining loops
     remaining = tau - t - 1
 
-    # Your existing code
     # Production
     o = (alpha_shock @ (nu_shock @ (eta_prod_shock.multiply(xs))) + (beta_shock @ one_vec_proc))
                 
