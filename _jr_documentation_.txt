@@ -53,6 +53,13 @@ fix compiler errors in 'loss_calculation.py':
 change adaptive_shock.py & loss_calc.py to combined event scenario
 toDo: adaptive_shock.py: necessity of 'is_producer' check
 
+03.06
+simplify loss_calcularion.py
+clean_up & debug adaptive_shock.py
+
+05.06
+implement exponential decay of shock intensity over time
+
 
 
 

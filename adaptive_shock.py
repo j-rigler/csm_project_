@@ -4,6 +4,19 @@
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
+### IMPORTS ###
+
+import warnings
+warnings.filterwarnings("ignore")
+
+import pandas as pd
+from pandas import IndexSlice as idx
+
+import scipy.io as io
+import scipy.sparse as sprs
+import numpy as np
+
+
 ### PARAMETERS ###
 
 input_folder  = './input/'          # folder with parameters and input data
@@ -17,21 +30,18 @@ limit_rel_sim = 0.26
 limit_dev_sim = 0.32
 
 shock_scenario  = [('Pakistan','Rice and products'), ('India', 'Rice and products')]
-shock_scaling   = [0, 0.5, 0.2, 0.6, 0.8, 0.1, 0.2, 0.1, 0.4, 0.3]
 
+def phi(t):                                      
+    return np.round(np.exp(-0.5*t), 2)           # Assumed exponential decay of shock intensity over time
 
-### IMPORTS ###
+shock_scaling = [1 - phi(t) for t in range(tau)] # Create values to scale production-output
 
-import warnings
-warnings.filterwarnings("ignore")
-
-import pandas as pd
-from pandas import IndexSlice as idx
-
-import scipy.io as io
-import scipy.sparse as sprs
-import numpy as np
-
+#idea: mu = list of mu for event
+#idea: phi_0 = list of phi_0 for event
+#idea: phi(phi_0, mu, t) = phi_0*np.exp(mu*t)
+#idea: shock_scaling = np.zeros(( len(shock_scenario), range(tau) ))    # Matrix to store different shock scalings
+#idea: for row in shock_scaling: row = [1 - phi(phi_0[row], mu[row], t) for t in range(tau)]
+# => we have: matrix with shock intensities over time, specifically for a sector.
 
 ### LOADING DATA ###
 
