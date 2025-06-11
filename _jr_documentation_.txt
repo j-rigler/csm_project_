@@ -1,0 +1,114 @@
+24.05
+creating git repo -> import model repository
+fix compiler errors:
+    ? 92: producer = (alpha@one_vec_proc) + (beta@one_vec_proc) #statt one_vec
+
+26.05
+fix compiler errors:
+    142: Exception has occurred: OSError - Cannot save file into a non-existent directory: 'results'
+    compesation=False
+    263: xs -> xs.toarray()
+add 267: a_shock_index = a_frame[a_frame['area'] == a_shock].index[0]  #possible bug
+    269: +a_frame.loc[a_shock,'code'] -> +a_frame.loc[a_shock_index,'code']
+add 018: import warnings warnings.filterwarnings("ignore")
+
+--- git push ---
+fix compiler errors:
+    find&replace(rl_shock -> limit_rel_sim)
+    find&replace(al_shock -> limit_dev_sim)
+
+29.05
+read & understand model: focus on quantity, trade and production (-output) functions and shocks to the production_output, idea in how to vary shocks over time
+
+30.05
+read & understand model: delta _abs _rel _dev
+coding:
+    line 215 & 253: change_al = set(np.where(al.toarray()[:,0]>=limit_dev_sim)[0]) # replace(limit_dev_sim, limit_abs_sim)
+    create branch jr
+    line 192: set o[shock_id] = 0.2 # here, the shock is applied
+
+31.05
+read & understand model: chapter 2.3
+coding:
+    268: XS.loc[idx[:, :], (a_shock, i_shock)] = xs.toarray()[:, 0] # added '[:, 0]'
+     19: create vec shock_intensities = [0,0.5,0.2,0.6,0.8,0.1,0.2,0.1,0.4,0.3]
+    193: o[shock_id] = shock_intensities[t] # dynamic shock intensities
+
+    run simulation with various shock intensities
+
+fix compiler errors in 'loss_calculation.py':
+    # Setup a dataframe for the absolute loss #find and replace
+    43: find&replace(X -> X_base)
+
+01.06
+adaptive_shock.py:
+    change o = shock_intensities[t] to o = shock_intensities[t]*o
+
+fix compiler errors in 'loss_calculation.py':
+    add 43: a_shock_index = a_frame[a_frame['area'] == a_shock].index[0]
+    comment out all 'no_comp_' objects
+    102: quit(), leave out per capita evaluation
+
+02.06
+change adaptive_shock.py & loss_calc.py to combined event scenario
+toDo: adaptive_shock.py: necessity of 'is_producer' check
+
+03.06
+simplify loss_calcularion.py
+clean_up & debug adaptive_shock.py
+
+05.06
+implement exponential decay of shock intensity over time
+
+
+
+toDo:
+- loss calculation von valentin
+
+- evaluation of losses, where is the strongest difference
+
+- mtx file with trade matrix
+
+- run simulations for different events
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
