@@ -47,7 +47,7 @@ phi_0_pakistan = [0.2146, 0.4124, 0.27, 0.29, 0.7274]
 
 shock_sectors_russia   = [('Russian Federation', 'Wheat and products'),
                             ('Russian Federation', 'Barley and products'),
-                            ('Russian Federation', 'Cereals, other'),
+                            ('Russian Federation', 'Cereals, Other'),
                             ('Russian Federation', 'Maize and products'),
                             ('Russian Federation', 'Oats'),
                             ('Russian Federation', 'Peas'),
@@ -56,13 +56,69 @@ shock_sectors_russia   = [('Russian Federation', 'Wheat and products'),
 
 phi_0_russia = [0.3276, 0.5330, 0.3985, 0.2216, 0.4039, 0.2344, 0.3208, 0.6225]
 
-# Construct shock scaling
-scenario = 'Pakistan_floods'
-shock_sectors = shock_sectors_pakistan
-shock_scaling = np.zeros(( len(shock_sectors_pakistan), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
+shock_sectors_HOA = [('Kenya', 'Sugar cane'),
+                     ('Ethiopia', 'Sorghum and products'),
+                     ('Kenya', 'Tea (including mate)'),
+                     ('Kenya', 'Tomatoes and products'),
+                     ('Ethiopia', 'Milk - Excluding Butter'),
+                     ('Ethiopia', 'Sugar cane'),
+                     ('Ethiopia', 'Sweet potatoes'),
+                     ('Kenya', 'Pineapples and products'),
+                     ('Ethiopia', 'Millet and products'),
+                     ('Kenya', 'Sorghum and products'),
+                     ('Kenya', 'Eggs'),
+                     ('Kenya', 'Wheat and products'),
+                     ('Ethiopia', 'Groundnuts'),
+                     ('Kenya', 'Millet and products'),
+                     ('Ethiopia', 'Rice and products'),
+                     ('Ethiopia', 'Sesame seed'),
+                     ('Ethiopia', 'Honey'),
+                     ('Ethiopia', 'Onions'),
+                     ('Kenya', 'Lemons, Limes and products'),
+                     ('Kenya', 'Onions'),
+                     ('Kenya', 'Coconuts - Incl Copra'),
+                     ('Djibouti', 'Beans'),
+                     ('Somalia', 'Bovine Meat')]
 
-for row_index, row in enumerate(shock_scaling):
-    shock_scaling[row_index, : ] = [1 - phi(phi_0_pakistan[row_index], mu, t) for t in range(tau)]
+phi_0_HOA = [0.1842, 0.1123, 0.1548, 0.4432, 0.0972, 0.1883, 0.19, 0.7051, 0.0973, 0.3685, 0.0883,
+             0.2353, 0.4392, 0.4329, 0.2469, 0.2315, 0.3458, 0.1257, 0.4019,
+             0.1719, 0.2577, 0.2516, 0.0385] #HOA values averages per year 2021-2023 - need to recheck these values
+
+shock_sectors_URU = [('Uruguay', 'Soyabeans'),
+                     ('Uruguay', 'Maize and products'),
+                     ('Uruguay', 'Milk - Excluding Butter'),
+                     ('Uruguay', 'Sorghum and products'),
+                     ('Uruguay', 'Lemons, Limes and products'),
+                     ('Uruguay', 'Rice and products'),
+                     ('Uruguay', 'Oranges, Mandarines')]
+
+phi_0_uruguay = [0.3795, 0.3455, 0.9296, 0.2178, 0.3683, 0.9790, 0.1889] #Uruguay values averages per year 2021-2023
+
+# Construct shock scaling
+#scenario = 'Pakistan_floods'
+#shock_sectors = shock_sectors_pakistan
+#shock_scaling = np.zeros(( len(shock_sectors_pakistan), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
+#for row_index, row in enumerate(shock_scaling):
+#    shock_scaling[row_index, : ] = [1 - phi(phi_0_pakistan[row_index], mu, t) for t in range(tau)]
+
+#combined shock scenario
+#scenario = "Combined_PAKRUS"  # Combined scenario for Pakistan and Russia
+#combined_shock_scenario = "PAKRUS"
+#shock_sectors = shock_sectors_pakistan + shock_sectors_russia
+#phi_0_combined = phi_0_pakistan + phi_0_russia
+#shock_scaling = np.zeros(( len(shock_sectors), tau )) 
+
+scenario = "ALL"  # Combined scenario for all regions
+combined_shock_scenario = "ALL"
+shock_sectors = shock_sectors_pakistan + shock_sectors_russia + shock_sectors_HOA + shock_sectors_URU
+phi_0_combined = phi_0_pakistan + phi_0_russia + phi_0_HOA + phi_0_uruguay
+shock_scaling = np.zeros(( len(shock_sectors), tau )) 
+
+
+
+# Iterate through the combined phi_0 values to populate the shock_scaling matrix
+for row_index, phi_val in enumerate(phi_0_combined):
+    shock_scaling[row_index, :] = [1 - phi(phi_val, mu, t) for t in range(tau)]
 
 
 ### LOADING DATA ###
