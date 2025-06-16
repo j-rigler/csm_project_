@@ -173,12 +173,12 @@ X.to_csv(output_folder + 'base.csv')
 print('Baseline scenario done.')
 
 #filter for items used in paper
-valid_ids_set = set(X.index.get_level_values('item').unique())
+#valid_ids_set = set(X.index.get_level_values('item').unique())
 
 # Corrected line: Use .isin() to filter for items present in valid_ids_set
-food_production_data = food_production_data[food_production_data['Item'].isin(valid_ids_set)]
+#food_production_data = food_production_data[food_production_data['Item'].isin(valid_ids_set)]
 
-food_production_data.to_csv(data_folder + 'fao_data/fao_all_with_coords_filtered.csv', index=False)
+#food_production_data.to_csv(data_folder + 'fao_data/fao_all_with_coords_filtered.csv', index=False)
 
 # quit() at this point
 ### SIMULATION: SHOCK ADAPTATION ###
@@ -210,101 +210,133 @@ T_shock        = T.copy()
 start_time = time.time()
 
 for t in range(tau):
-    # Calculate remaining loops
-
     # Production
     o = (alpha_shock @ (nu_shock @ (eta_prod_shock.multiply(xs))) + (beta_shock @ one_vec_proc))
-                
+
     # Start Stock
     if t == 0:
         o = o + xstartstock
-               
-    # Apply shock: outcome of o = (1 - phi)*o, shock_scaling[t] = 1 - phi[t]
+
+    # Apply shock: outcome of o = (1 - phi) * o, shock_scaling[t] = 1 - phi[t]
     for pair in shock_ids:
-        o[pair] = (1+shock_scaling[t])*o[pair]
-                
+        if pair in o:
+            try:
+                o[pair] = (1 + shock_scaling[t]) * o[pair]
+            except IndexError:
+                print(f"⚠️  Index {t} out of bounds for shock_scaling (length: {len(shock_scaling)})")
+                break
+        else:
+            print(f"⚠️  Key '{pair}' not found in dictionary 'o'")
+
     # Trade
     h = T_shock @ (eta_exp_shock.multiply(xs))
-                
-    # Summation 
+
+    # Summation
     xs = o + h
 
+    # Save time trace
     xs_timetrace[:, t] = xs.toarray()[:, 0]
 
     # Relative loss
-    rl                    = sprs.csr_matrix(np.nan_to_num(1-xs/sprs.csr_matrix(x_timetrace_base[:, t]).T, nan = 0))
+    base_t = x_timetrace_base[:, t]
+    xs_safe = xs.toarray()[:, 0]
+    rl = sprs.csr_matrix(np.nan_to_num(1 - xs_safe / base_t.T.toarray()[0], nan=0.0))
     rl.data[rl.data < -1] = -1
-    rl_timetrace[:, t]    = rl.toarray()[:, 0]
+    rl_timetrace[:, t] = rl.toarray()[:, 0]
 
     # Absolute loss
-    al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:,t]).T - xs, nan = 0))
+    al = sprs.csr_matrix(np.nan_to_num(base_t.T.toarray()[0] - xs_safe, nan=0.0))
     al_timetrace[:, t] = al.toarray()[:, 0]
-        
+
     # Check for events
-        
     if t == 1 and compensation:
-        
-        change_rl = set(np.where(rl.toarray()[:,0] > limit_rel_sim)[0]) #rl_shock
-        change_al = set(np.where(al.toarray()[:,0] > limit_abs_sim)[0]) #al_shock
-        change    = np.array(list(change_rl.intersection(change_al)))
-        mask      = np.isin(np.arange(Na * Ni), change)
-        
-        alpha_shock[mask, :]    = (alpha[mask, :].multiply(transition_alpha_multi[mask, :])+transition_alpha_rewire[mask, :]).multiply(rl[mask])
-        mask_2                  = (alpha_shock.sum(axis = 0).A1 > 0) & ((alpha_shock.sum(axis = 0).A1 < alpha.sum(axis = 0).A1 * 0.99) | (alpha_shock.sum(axis = 0).A1 > alpha.sum(axis = 0).A1 * 1.01))
-        alpha_shock[:, mask_2]  =  alpha_shock[:, mask_2].multiply(alpha.sum(axis = 0).A1[mask_2] / alpha_shock.sum(axis = 0).A1[mask_2])
-                   
-        beta_shock[mask, :]     = (beta[mask, :].multiply(transition_beta_multi[mask, :]) + transition_beta_rewire[mask, :]).multiply(rl[mask])
-        mask_3                  = (beta_shock.sum(axis = 0).A1 > 0) & ((beta_shock.sum(axis = 0).A1 < beta.sum(axis = 0).A1 * 0.99) | (beta_shock.sum(axis = 0).A1 > beta.sum(axis = 0).A1 * 1.01))
-        beta_shock[:, mask_3]   =  beta_shock[:,mask_3].multiply(beta.sum(axis = 0).A1[mask_3]/beta_shock.sum(axis = 0).A1[mask_3])
-                    
-        nu_shock[:, mask]       = (nu[:, mask].multiply(transition_nu_multi[:, mask]) + transition_nu_rewire[:, mask]).multiply(rl[mask].T)
-        mask_4                  = (nu_shock.sum(axis = 0).A1 > 0) & ((nu_shock.sum(axis = 0).A1 < 0.99) | (nu_shock.sum(axis = 0).A1 > 1.01))
-        nu_shock[:, mask_4]     =  nu_shock[:, mask_4] / nu_shock.sum(axis = 0).A1[mask_4]
-        
-        eta_exp_shock[mask, :]  = (eta_exp[mask, :].multiply(transition_eta_exp_multi[mask, :]) + transition_eta_exp_rewire[mask, :]).multiply(rl[mask])
-        
-        eta_prod_shock[mask, :] = (eta_prod[mask, :].multiply(transition_eta_prod_multi[mask, :]) + transition_eta_prod_rewire[mask, :]).multiply(rl[mask])
-        
-        eta_cons_shock[mask, :] = (eta_cons[mask, :].multiply(transition_eta_cons_multi[mask, :]) + transition_eta_cons_rewire[mask, :]).multiply(rl[mask])
-                    
-        faktor                  = eta_exp_shock[mask, :] + eta_prod_shock[mask, :] + eta_cons_shock[mask, :]
-        eta_exp_shock[mask, :]  = eta_exp_shock[mask, :] / faktor
+        change_rl = set(np.where(rl.toarray()[:, 0] > limit_rel_sim)[0])
+        change_al = set(np.where(al.toarray()[:, 0] > limit_abs_sim)[0])
+        change = np.array(list(change_rl & change_al))
+        mask = np.isin(np.arange(Na * Ni), change)
+
+        # alpha
+        alpha_shock[mask, :] = (alpha[mask, :].multiply(transition_alpha_multi[mask, :]) +
+                                transition_alpha_rewire[mask, :]).multiply(rl[mask])
+
+        mask_2 = ((alpha_shock.sum(axis=0).A1 > 0) &
+                  ((alpha_shock.sum(axis=0).A1 < alpha.sum(axis=0).A1 * 0.99) |
+                   (alpha_shock.sum(axis=0).A1 > alpha.sum(axis=0).A1 * 1.01)))
+
+        alpha_shock[:, mask_2] = alpha_shock[:, mask_2].multiply(
+            alpha.sum(axis=0).A1[mask_2] / alpha_shock.sum(axis=0).A1[mask_2]
+        )
+
+        # beta
+        beta_shock[mask, :] = (beta[mask, :].multiply(transition_beta_multi[mask, :]) +
+                               transition_beta_rewire[mask, :]).multiply(rl[mask])
+
+        mask_3 = ((beta_shock.sum(axis=0).A1 > 0) &
+                  ((beta_shock.sum(axis=0).A1 < beta.sum(axis=0).A1 * 0.99) |
+                   (beta_shock.sum(axis=0).A1 > beta.sum(axis=0).A1 * 1.01)))
+
+        beta_shock[:, mask_3] = beta_shock[:, mask_3].multiply(
+            beta.sum(axis=0).A1[mask_3] / beta_shock.sum(axis=0).A1[mask_3]
+        )
+
+        # nu
+        nu_shock[:, mask] = (nu[:, mask].multiply(transition_nu_multi[:, mask]) +
+                             transition_nu_rewire[:, mask]).multiply(rl[mask].T)
+
+        mask_4 = ((nu_shock.sum(axis=0).A1 > 0) &
+                  ((nu_shock.sum(axis=0).A1 < 0.99) |
+                   (nu_shock.sum(axis=0).A1 > 1.01)))
+
+        nu_shock[:, mask_4] = nu_shock[:, mask_4] / nu_shock.sum(axis=0).A1[mask_4]
+
+        # eta matrices
+        eta_exp_shock[mask, :] = (eta_exp[mask, :].multiply(transition_eta_exp_multi[mask, :]) +
+                                  transition_eta_exp_rewire[mask, :]).multiply(rl[mask])
+        eta_prod_shock[mask, :] = (eta_prod[mask, :].multiply(transition_eta_prod_multi[mask, :]) +
+                                   transition_eta_prod_rewire[mask, :]).multiply(rl[mask])
+        eta_cons_shock[mask, :] = (eta_cons[mask, :].multiply(transition_eta_cons_multi[mask, :]) +
+                                   transition_eta_cons_rewire[mask, :]).multiply(rl[mask])
+
+        # Normalize
+        faktor = eta_exp_shock[mask, :] + eta_prod_shock[mask, :] + eta_cons_shock[mask, :]
+        eta_exp_shock[mask, :] = eta_exp_shock[mask, :] / faktor
         eta_prod_shock[mask, :] = eta_prod_shock[mask, :] / faktor
         eta_cons_shock[mask, :] = eta_cons_shock[mask, :] / faktor
-        
-        T_shock[mask, :] = (T[mask, :].multiply(transition_import_multi[mask, :]) + transition_import_rewire[mask, :]).multiply(rl[mask])
-        
-        T_shock[:, mask] = (T[:, mask].multiply(transition_export_multi[:, mask]) + transition_export_rewire[:, mask]).multiply(rl[mask].T)
-                    
-        mask_5             = (T_shock.sum(axis = 0).A1 > 0) & ((T_shock.sum(axis = 0).A1 < 0.99) | (T_shock.sum(axis = 0).A1 > 1.01))
-        T_shock[:, mask_5] =  T_shock[:, mask_5] / T_shock.sum(axis = 0).A1[mask_5]
-        
-        if t == 2 and compensation:
-        
-            change_rl = set(np.where(rl.toarray()[:,0] > limit_rel_sim)[0])
-            change_al = set(np.where(al.toarray()[:,0] > limit_abs_sim)[0])
-            change    = np.array(list(change_rl.intersection(change_al)))
-            mask_subs = np.isin(np.arange(Na * Ni), change)
-        
-            mask_subs_2 = substitutability_trade[mask_subs].nonzero()[1]
-    
-            T_shock[mask_subs_2, :] =  T_shock[mask_subs_2, :].multiply(sprs.csr_matrix(substitutability_trade[mask_subs].data + 1).T)
-    
-            mask_subs_3             = (T_shock.sum(axis = 0).A1 > 0) & ((T_shock.sum(axis = 0).A1 < 0.99) | (T_shock.sum(axis = 0).A1 > 1.01))
-            T_shock[:, mask_subs_3] =  T_shock[:, mask_subs_3] / T_shock.sum(axis = 0).A1[mask_subs_3]
 
-    # Timing and print progress
-    elapsed = time.time() - start_time
-    avg_time_per_loop = elapsed / (t + 1)
-    est_remaining = avg_time_per_loop * remaining
+        # Trade matrix T_shock
+        T_shock[mask, :] = (T[mask, :].multiply(transition_import_multi[mask, :]) +
+                            transition_import_rewire[mask, :]).multiply(rl[mask])
+        T_shock[:, mask] = (T[:, mask].multiply(transition_export_multi[:, mask]) +
+                            transition_export_rewire[:, mask]).multiply(rl[mask].T)
 
-    print(f"[{time.strftime('%H:%M:%S')}] Loop {t+1}/{tau} done, Remaining: {remaining}, Estimated time left: {est_remaining:.2f}s")
+        mask_5 = ((T_shock.sum(axis=0).A1 > 0) &
+                  ((T_shock.sum(axis=0).A1 < 0.99) |
+                   (T_shock.sum(axis=0).A1 > 1.01)))
+        T_shock[:, mask_5] = T_shock[:, mask_5] / T_shock.sum(axis=0).A1[mask_5]
 
-    # Store results
-    XS.loc[idx[:,:], 'combined_shocks'] = xs.toarray()[:, 0] 
+    # 2nd round substitution logic
+    if t == 2 and compensation:
+        change_rl = set(np.where(rl.toarray()[:, 0] > limit_rel_sim)[0])
+        change_al = set(np.where(al.toarray()[:, 0] > limit_abs_sim)[0])
+        change = np.array(list(change_rl & change_al))
+        mask_subs = np.isin(np.arange(Na * Ni), change)
 
+        mask_subs_2 = substitutability_trade[mask_subs].nonzero()[1]
 
-    # save
+        T_shock[mask_subs_2, :] = T_shock[mask_subs_2, :].multiply(
+            sprs.csr_matrix(substitutability_trade[mask_subs].data + 1).T
+        )
+
+        mask_subs_3 = ((T_shock.sum(axis=0).A1 > 0) &
+                       ((T_shock.sum(axis=0).A1 < 0.99) |
+                        (T_shock.sum(axis=0).A1 > 1.01)))
+        T_shock[:, mask_subs_3] = T_shock[:, mask_subs_3] / T_shock.sum(axis=0).A1[mask_subs_3]
+
+# Store results
+XS.loc[idx[:, :], 'combined_shocks'] = xs.toarray()[:, 0]
+
+# Save results (after last time step)
+if t == total_time_steps - 1:
     if compensation:
         XS.to_csv(output_folder + 'combined_shocks' + '_comp.csv')
     else:
