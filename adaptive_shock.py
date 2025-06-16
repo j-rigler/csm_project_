@@ -11,7 +11,8 @@ from input.shock_input_data import *
 
 ### PARAMETERS ###
 
-scenario = 'HOA'                    # specify scenario
+scenario = 'URU'                    # specify scenario
+production_cap = True               # turn on / off global production cap
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
 
@@ -48,8 +49,13 @@ match scenario:
         phi_0 = phi_0_PAK + phi_0_RUS + phi_0_HOA + phi_0_URU
 
                         # Construct shock scaling
-shock_scaling = np.zeros(( len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
+shock_scaling = np.zeros((len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
 
+for row_index, row in enumerate(shock_scaling):
+    shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
+
+# Construct shock scaling
+shock_scaling = np.zeros(( len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
 for row_index, row in enumerate(shock_scaling):
     shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
 
@@ -159,6 +165,7 @@ for t in range(tau):
     if t == 0:
         x = x+xstartstock
 
+                        # Update time series
     x_timetrace_base[:,t] = x.toarray()[:, 0]
 
                         # Store
@@ -213,13 +220,20 @@ for t in range(tau):
     for sector_id in sector_ids:
         sector = sector_ids.index(sector_id)
         o[sector_id] = shock_scaling[sector, t] * o[sector_id]
-                
-                
+                        
                         # Trade
     h = T_shock @ (eta_exp_shock.multiply(xs))
                 
                         # Summation 
     xs = o + h
+
+    # implement global production cap
+    if production_cap:
+        total_prod = xs.sum()
+        productioncap = 10e9    # see https://www.fao.org/statistics/highlights-archive/highlights-detail/agricultural-production-statistics-2010-2023/en
+        if total_prod > productioncap:
+            scaling = productioncap / total_prod
+            xs = xs.multiply(scaling)
 
     xs_timetrace[:, t] = xs.toarray()[:, 0]
 
