@@ -61,15 +61,10 @@ clean_up & debug adaptive_shock.py
 implement exponential decay of shock intensity over time
 
 
+10/11.6
+finish evaluation
+matrix saving
 
-toDo:
-- loss calculation von valentin
-
-- evaluation of losses, where is the strongest difference
-
-- mtx file with trade matrix
-
-- run simulations for different events
 
 
 

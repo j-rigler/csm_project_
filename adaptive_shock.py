@@ -3,69 +3,54 @@
 #
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
-
 ### IMPORTS ###
 
-import warnings
-warnings.filterwarnings("ignore")
-
-import pandas as pd
-from pandas import IndexSlice as idx
-
-import scipy.io as io
-import scipy.sparse as sprs
-import numpy as np
+from shock_input_data import *
 
 
 ### PARAMETERS ###
 
-input_folder  = './input/'          # folder with parameters and input data
-output_folder = './results/'        # folder to write results to
-
+scenario = 'HOA'                    # specify scenario
 tau = 10                            # number of iterations
 compensation = True                 # turn adaptation on
+
+input_folder  = './input/'          # folder with parameters and input data
+output_folder = './results/'        # folder to write results to
 
 limit_abs_sim = 1000                # Event limits
 limit_rel_sim = 0.26
 limit_dev_sim = 0.32
 
 
+### LOADING DATA ###
 
-mu = -0.5                                                # Assumption
+                        # Select matching shock scenario
+match scenario:
+    case "PAK":
+        shock_sectors = shock_sectors_PAK
+        phi_0 = phi_0_PAK 
 
-def phi(phi_0, mu, t):                                      
-    return np.round(phi_0 * np.exp(mu * t), 2)           # Assumed exponential decay of shock intensity over time
+    case "RUS": 
+        shock_sectors = shock_sectors_RUS
+        phi_0 = phi_0_RUS
 
-# Shock scenarios
-shock_sectors_pakistan = [('Pakistan','Rice and products'),
-                            ('Pakistan','Cottonseed'),
-                            ('Pakistan','Rape and Mustardseed'),
-                            ('Pakistan', 'Peas'),
-                            ('Pakistan', 'Dates')]
+    case "HOA":
+        shock_sectors = shock_sectors_HOA
+        phi_0 = phi_0_HOA
+        
+    case "URU":
+        shock_sectors = shock_sectors_URU
+        phi_0 = phi_0_URU
 
-phi_0_pakistan = [0.2146, 0.4124, 0.27, 0.29, 0.7274]
+    case _:
+        shock_sectors = shock_sectors_PAK + shock_sectors_RUS + shock_sectors_HOA + shock_sectors_URU 
+        phi_0 = phi_0_PAK + phi_0_RUS + phi_0_HOA + phi_0_URU
 
-shock_sectors_russia   = [('Russian Federation', 'Wheat and products'),
-                            ('Russian Federation', 'Barley and products'),
-                            ('Russian Federation', 'Cereals, other'),
-                            ('Russian Federation', 'Maize and products'),
-                            ('Russian Federation', 'Oats'),
-                            ('Russian Federation', 'Peas'),
-                            ('Russian Federation', 'Potatoes and products'),
-                            ('Russian Federation', 'Rye and products')]
-
-phi_0_russia = [0.3276, 0.5330, 0.3985, 0.2216, 0.4039, 0.2344, 0.3208, 0.6225]
-
-# Construct shock scaling
-scenario = 'Pakistan_floods'
-shock_sectors = shock_sectors_pakistan
-shock_scaling = np.zeros(( len(shock_sectors_pakistan), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
+                        # Construct shock scaling
+shock_scaling = np.zeros(( len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
 
 for row_index, row in enumerate(shock_scaling):
-    shock_scaling[row_index, : ] = [1 - phi(phi_0_pakistan[row_index], mu, t) for t in range(tau)]
-
-
-### LOADING DATA ###
+    shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
 
                         # Load information
 io_codes = pd.read_csv(input_folder + 'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
