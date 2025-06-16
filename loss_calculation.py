@@ -4,9 +4,9 @@
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
-### PARAMETERS ###
+### PARAMETERS ### PAK RUS HOA URU ALL
 
-scenario = 'HOA'
+scenario = 'URU'
 
 input_folder  = './input/'               # Folder with parameters
 output_folder = './results/'             # Folder to write results to
