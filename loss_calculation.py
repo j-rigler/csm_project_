@@ -6,11 +6,12 @@
 
 ### PARAMETERS ###
 
+scenario = 'HOA'
+
 input_folder  = './input/'               # Folder with parameters
 output_folder = './results/'             # Folder to write results to
 losses        = './evaluation/'          # Folder to store the refined results to
 
-scenario = 'Pakistan_floods'
 
 ### IMPORTs ###
 

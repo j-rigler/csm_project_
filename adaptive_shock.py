@@ -3,16 +3,17 @@
 #
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
+
 ### IMPORTS ###
 
-from shock_input_data import *
+from input.shock_input_data import *
 
 
 ### PARAMETERS ###
 
 scenario = 'HOA'                    # specify scenario
-tau = 10                            # number of iterations
 compensation = True                 # turn adaptation on
+tau = 10                            # number of iterations
 
 input_folder  = './input/'          # folder with parameters and input data
 output_folder = './results/'        # folder to write results to
@@ -52,7 +53,7 @@ shock_scaling = np.zeros(( len(shock_sectors), tau )) #[1 - phi(t) for t in rang
 for row_index, row in enumerate(shock_scaling):
     shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
 
-                        # Load information
+                        # Load further information
 io_codes = pd.read_csv(input_folder + 'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
 su_codes = pd.read_csv(input_folder + 'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
 
@@ -210,7 +211,7 @@ for t in range(tau):
 
                         # Apply shocks
     for sector_id in sector_ids:
-        sector       = sector_ids.index(sector_id)
+        sector = sector_ids.index(sector_id)
         o[sector_id] = shock_scaling[sector, t] * o[sector_id]
                 
                 

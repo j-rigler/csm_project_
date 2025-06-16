@@ -65,7 +65,8 @@ implement exponential decay of shock intensity over time
 finish evaluation
 matrix saving
 
-
+16.06
+add more scenarios from lorenzo + cleaner implementation (match case)
 
 
 
