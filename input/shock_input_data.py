@@ -28,7 +28,7 @@ phi_0_PAK = [0.2146, 0.4124, 0.27, 0.29, 0.7274]
 
 shock_sectors_RUS = [('Russian Federation', 'Wheat and products'),
                      ('Russian Federation', 'Barley and products'),
-                     ('Russian Federation', 'Cereals, other'),
+                     ('Russian Federation', 'Cereals, Other'),
                      ('Russian Federation', 'Maize and products'),
                      ('Russian Federation', 'Oats'),
                      ('Russian Federation', 'Peas'),
@@ -73,6 +73,12 @@ shock_sectors_URU = [('Uruguay', 'Soyabeans'),
                      ('Uruguay', 'Oranges, Mandarines')]
 
 phi_0_URU = [0.3795, 0.3455, 0.9296, 0.2178, 0.3683, 0.9790, 0.1889] #Uruguay values averages per year 2021-2023
+
+# Transform lists into dictionaries
+shock_dict_PAK = dict(zip(shock_sectors_PAK, phi_0_PAK))
+shock_dict_RUS = dict(zip(shock_sectors_RUS, phi_0_RUS))
+shock_dict_HOA = dict(zip(shock_sectors_HOA, phi_0_HOA))
+shock_dict_URU = dict(zip(shock_sectors_URU, phi_0_URU))
 
 #shock intensity curve constuction
 mu = -0.5                                                # Assumption

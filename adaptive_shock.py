@@ -11,7 +11,7 @@ from input.shock_input_data import *
 
 ### PARAMETERS ###
 
-scenario = 'HOA'                    # specify scenario
+scenario = 'all'                    # specify scenario
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
 
