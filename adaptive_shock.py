@@ -11,7 +11,7 @@ import time
 
 ### PARAMETERS ###
 
-scenario = 'URU'                    # specify scenario
+scenario = 'ALL'                    # specify scenario
 production_cap = True               # turn on / off global production cap
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
