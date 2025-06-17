@@ -4,15 +4,14 @@
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
-### PARAMETERS ###
+### PARAMETERS ### PAK RUS HOA URU ALL
+
+scenario = 'ALL'
 
 input_folder  = './input/'               # Folder with parameters
 output_folder = './results/'             # Folder to write results to
 losses        = './evaluation/'          # Folder to store the refined results to
 
-#scenario = 'Pakistan_floods'
-#scenario = "Combined_PAKRUS"
-scenario = 'ALL'
 
 ### IMPORTs ###
 
@@ -68,7 +67,7 @@ XS_comp.to_csv(losses + scenario + '-Losses.csv')
 
 pc_losses = XS_comp.iloc[:, 3]
 
-XS_highest_losses = XS_comp[pc_losses > 1]                                                       # Only keep Data for sectors that reach treshold of 1kg
+XS_highest_losses = XS_comp[pc_losses > 1000]                                                       # Only keep Data for sectors that reach treshold of 1kg
 XS_highest_losses = XS_highest_losses.sort_values(by = XS_comp.columns[3], ascending = False)    # Sort values
 XS_highest_losses.to_csv(losses + scenario + '-highestLosses.csv')                               # Save
 
