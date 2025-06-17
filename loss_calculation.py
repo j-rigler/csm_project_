@@ -1,19 +1,19 @@
 ############## SHOCK ADAPTATION FOOD SUPPLY MODEL #############
 #
 #
-#  SOPHIA BAUM - 2024
+#  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
-### PARAMETERS ###
+### PARAMETERS ### PAK RUS HOA URU ALL
 
-input_folder  = './input/'               # folder with parameters
-output_folder = './results/'             # folder to write results to
-losses        = './evaluation/'          # folder to store the refined results to
+scenario = 'ALL'
 
-a_shock = 'combined_shocks'
+input_folder  = './input/'               # Folder with parameters
+output_folder = './results/'             # Folder to write results to
+losses        = './evaluation/'          # Folder to store the refined results to
 
 
-### IMPORT ###
+### IMPORTs ###
 
 import pandas as pd
 from pandas import IndexSlice as idx
@@ -26,96 +26,51 @@ import numpy as np
 
 ### LOADING DATA ###
 
-# Load information
-io_codes = pd.read_csv(input_folder + 'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
-su_codes = pd.read_csv(input_folder + 'su_codes_alph.csv').drop('Unnamed: 0', axis = 1)
+X_base  = pd.read_csv(output_folder + scenario + '_base_.csv', index_col = [0, 1], header = [0])
+XS_comp = pd.read_csv(output_folder + scenario + '.csv',       index_col = [0, 1], header = [0])
 
-# Create single indexes
-areas     = np.array(sorted(set(io_codes['area'])))
-items     = np.array(sorted(set(io_codes['item'])))
-processes = np.array(sorted(set(su_codes['proc'])))
-
-# Create multi indexes
-ai_index = pd.MultiIndex.from_product([areas, items])
-ap_index = pd.MultiIndex.from_product([areas, items])
-
-# Load further information on countries
+    # Load further information on countries
 a_frame  = pd.read_csv(input_folder + 'a_frame.csv')
 
-# Load the results of the simulation
+### GENERAL LOSS CALCULATIONS ###
 
-X_base     = pd.read_csv(output_folder + 'base.csv',            index_col = [0, 1], header = [0])
-XS_comp    = pd.read_csv(output_folder + 'combined_shocks.csv', index_col = [0, 1], header = [0])
-#XS_no_comp = pd.read_csv(output_folder + a_frame.loc[a_shock_index, 'code'] + '_no_comp.csv', index_col = [0,1], header = [0,1])
+x_i = XS_comp['amount [t]']                                                         # Extract values to transform
 
-
-### COMPUTATIONS ###
-
-# Compute relative loss
-#RL_no_comp = XS_no_comp.copy()
-RL_comp    = XS_comp.copy()
+XS_comp['absolute_losses [t]'] = (X_base['base'] - x_i).fillna(0)                       # Absolute loss calculation
+XS_comp['relative_losses'] = (1 - x_i / X_base['base']).fillna(0).clip(lower = -1)  # Realative loss calculation and Manipulation
 
 
-#RL_no_comp[col] = ((X_base['base'] - #RL_no_comp[col]) / X_base['base']).fillna(0)
-RL_comp   ['combined_shocks'] = ((X_base['base'] - RL_comp['combined_shocks']) / X_base['base']).fillna(0)  
+### PER CAPITA EVALUATION ###
 
-#RL_no_comp[#RL_no_comp < -1] = -1
-RL_comp = RL_comp.clip(lower=-1)
+    # Create dictionary, keys: countries, values: populations
+populations = {}                                                   
 
-# Setup a dataframe for the relative loss
-#RL_no_comp.columns       = pd.MultiIndex.from_product([[a_shock], items])
-#RL_no_comp.columns.names = ['a_shock', 'i_shock']
-#RL_no_comp.index.names   = ['a_receive', 'i_receive'] 
+countries  = a_frame['area']
+population = a_frame['population']
 
-RL_comp.columns          = ['combined_shocks']
-RL_comp.index.names      = ['a_receive', 'i_receive'] 
+for index, country in enumerate(countries):
+    populations[country] = population[index]                       # Construct dictionary
 
-# Save
-#RL_no_comp.to_csv(losses + 'RL-' + a_frame.loc[a_shock, 'code'] + '_no_comp.csv')
-RL_comp.to_csv   (losses + 'RL-combined_shocks_comp.csv')
+    # Write corresponding populations in evluation sheet - needed for pc_losses
+for row in XS_comp.itertuples():                                    # Iterate over all rows
+    index = row.Index                                               # Indentify country name
+    country = index[0]                                              # Indentify country name
+    XS_comp.loc[index, 'al/capita [kg]'] = populations[country]     # Write corresponding population in new cells for pc calc
 
+XS_comp['al/capita [kg]'] = 1000 * XS_comp['absolute_losses [t]'] / XS_comp['al/capita [kg]'] # Calc pc_losses + convert tons in kg
 
-# Compute absolute loss
-#AL_no_comp = XS_no_comp.copy()
-AL_comp    = XS_comp.copy()
-
-
-#AL_no_comp[col] = X_base['base'] - XS_no_comp[col]
-AL_comp['combined_shocks']    = X_base['base'] - AL_comp['combined_shocks']
-
-# Setup a dataframe for the absolute loss
-#AL_no_comp.columns       = pd.MultiIndex.from_product([[a_shock], items])
-#AL_no_comp.columns.names = ['a_shock', 'i_shock']
-#AL_no_comp.index.names   = ['a_receive', 'i_receive'] 
-
-AL_comp.columns          = ['combined_shocks']
-AL_comp.index.names      = ['a_receive', 'i_receive']  
-
-# Save
-#AL_no_comp.to_csv(losses + 'AL-' + a_frame.loc[a_shock,'code'] + '_no_comp.csv')
-AL_comp.to_csv   (losses + 'AL-combined_shocks_comp.csv')
+#Save
+XS_comp.to_csv(losses + scenario + '-Losses.csv') 
 
 
-quit()
-# Compute absolute loss per capita
-#AL_no_comp_pc = #AL_no_comp.reset_index().merge(a_frame.loc[:, 'population'], left_on = 'level_0',right_index = True)
+### FIND COUNTRIES WITH HIGHEST CHANGES ###
 
-for col in AL_comp.columns:
-    #AL_no_comp_pc[col] = #AL_no_comp_pc[col] / #AL_no_comp_pc['population']
-    AL_comp_pc[col]    = AL_comp_pc[col]    / AL_comp_pc['population']
+pc_losses = XS_comp.iloc[:, 3]
 
-#AL_no_comp_pc          = #AL_no_comp_pc.rename(columns = {'level_0' : 'area', 'level_1' : 'item'}).set_index(['area', 'item'])*1000     # times 1000 transforms the values from tons to kg
-AL_comp_pc             = AL_comp_pc.rename(   columns = {'level_0' : 'area', 'level_1' : 'item'}).set_index(['area', 'item'])*1000
+XS_highest_losses = XS_comp[pc_losses > 500]                                                       # Only keep Data for sectors that reach treshold of 100kg
+XS_highest_losses = XS_highest_losses.sort_values(by = XS_comp.columns[3], ascending = False)    # Sort values
+XS_highest_losses.to_csv(losses + scenario + '-highestLosses.csv')                               # Save
 
-# Setup a dataframe for the absolute loss
-#AL_no_comp_pc.columns       = pd.MultiIndex.from_product([[a_shock], items])
-#AL_no_comp_pc.columns.names = ['a_shock', 'i_shock']
-#AL_no_comp_pc.index.names   = ['a_receive', 'i_receive'] 
-
-AL_comp_pc.columns          = pd.MultiIndex.from_product([[a_shock], items])
-AL_comp_pc.columns.names    = ['a_shock', 'i_shock']
-AL_comp_pc.index.names      = ['a_receive', 'i_receive']  
-
-# Save
-#AL_no_comp_pc.to_csv(losses + 'AL_pc-' + a_frame.loc[a_shock, 'code'] + '_no_comp.csv')
-#AL_comp_pc.to_csv(   losses + 'AL_pc-' + a_frame.loc[a_shock_index, 'code'] + '_comp.csv')
+XS_highest_profits = XS_comp[pc_losses < -1]                                                     # Only keep Data for sectors that reach tresholdof -1kg
+XS_highest_profits = XS_highest_profits.sort_values(by = XS_comp.columns[3], ascending = False)  # Sort values
+XS_highest_profits.to_csv(losses + scenario + '-highestProfits.csv')                             # Save
