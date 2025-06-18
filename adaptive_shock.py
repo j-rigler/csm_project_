@@ -244,6 +244,18 @@ for t in range(tau):
     al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:, t]).T - xs, nan = 0))
     al_timetrace[:, t] = al.toarray()[:, 0]
         
+
+# Global production cap logic (inside main loop)
+if production_cap:
+    total_prod = xs.sum()
+    productioncap *= 1.011  # Increase production cap by 1.1% per time step
+
+    if total_prod > productioncap:
+        scaling = productioncap / total_prod
+        xs = xs.multiply(scaling)
+        print(f"[t={t}] Production capped: scaled by {scaling:.4f} to {productioncap:.2e}")
+
+
                         # Check for events   
     if t == 1 and compensation:
         
@@ -297,14 +309,14 @@ for t in range(tau):
         T_shock[:, mask_subs_3] =  T_shock[:, mask_subs_3] / T_shock.sum(axis = 0).A1[mask_subs_3]
 
             # global production cap:
-        if production_cap:
-            total_prod = xs.sum()
-                # increase production cap by 1.1% per time step
-            productioncap *= 1.011
+        #if production_cap:
+        #    total_prod = xs.sum()
+        #        # increase production cap by 1.1% per time step
+        #    productioncap *= 1.011
 
-            if total_prod > productioncap:
-                scaling = productioncap / total_prod
-                xs = xs.multiply(scaling)
+         #   if total_prod > productioncap:
+         #       scaling = productioncap / total_prod
+          #      xs = xs.multiply(scaling)
     
                         # Store
 XS.loc[idx[:,:], 'amount [t]'] = xs.toarray()[:, 0] 
