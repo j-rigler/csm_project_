@@ -12,7 +12,7 @@ import os
 
 ### PARAMETERS ###
 
-scenario = 'PAK'                    # specify scenario
+scenario = 'HOA'                    # specify scenario
 production_cap = True               # turn on / off global production cap
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
