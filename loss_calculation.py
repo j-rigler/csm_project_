@@ -6,7 +6,7 @@
 
 ### PARAMETERS ### PAK RUS HOA URU ALL
 
-scenario = 'PAK'
+scenario = 'HOA'
 
 input_folder  = './input/'               # Folder with parameters
 output_folder = './results/'             # Folder to write results to
@@ -71,6 +71,6 @@ XS_highest_losses = XS_comp[pc_losses > 500]                                    
 XS_highest_losses = XS_highest_losses.sort_values(by = XS_comp.columns[3], ascending = False)    # Sort values
 XS_highest_losses.to_csv(losses + scenario + '-highestLosses.csv')                               # Save
 
-XS_highest_profits = XS_comp[pc_losses < -1]                                                     # Only keep Data for sectors that reach tresholdof -1kg
+XS_highest_profits = XS_comp[pc_losses < -500]                                                     # Only keep Data for sectors that reach tresholdof -1kg
 XS_highest_profits = XS_highest_profits.sort_values(by = XS_comp.columns[3], ascending = False)  # Sort values
 XS_highest_profits.to_csv(losses + scenario + '-highestProfits.csv')                             # Save
