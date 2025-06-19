@@ -7,17 +7,21 @@
 ### IMPORTS ### PAK RUS HOA URU ALL
 
 from input.shock_input_data import *
+import os
 
 
 ### PARAMETERS ###
 
-scenario = 'ALL'                    # specify scenario
+scenario = 'PAK'                    # specify scenario
 production_cap = True               # turn on / off global production cap
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
+#all_sceanrios = ['PAK', 'RUS', 'HOA', 'URU', 'ALL']
+overshoot_data = []
+
 
 input_folder  = './input/'          # folder with parameters and input data
-output_folder = './results/'        # folder to write results to
+output_folder = './evaluation/'        # folder to write results to
 
 limit_abs_sim = 1000                # Event limits
 limit_rel_sim = 0.26
@@ -210,6 +214,8 @@ eta_prod_shock = eta_prod.copy()
 eta_cons_shock = eta_cons.copy()
 T_shock        = T.copy()
 
+
+
 for t in range(tau):
 
                         # Production
@@ -244,17 +250,21 @@ for t in range(tau):
     al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:, t]).T - xs, nan = 0))
     al_timetrace[:, t] = al.toarray()[:, 0]
         
-
-# Global production cap logic (inside main loop)
-if production_cap:
     total_prod = xs.sum()
-    productioncap *= 1.011  # Increase production cap by 1.1% per time step
-
+    productioncap *= 1.011
+# Global production cap logic (
     if total_prod > productioncap:
         scaling = productioncap / total_prod
         xs = xs.multiply(scaling)
-        print(f"[t={t}] Production capped: scaled by {scaling:.4f} to {productioncap:.2e}")
+    else:
+        scaling = 1.0
 
+    overshoot_data.append({
+        'scenario': scenario,
+        'time_step': t,
+        'total_prod': float(total_prod),
+        'scaling': float(scaling)
+    })
 
                         # Check for events   
     if t == 1 and compensation:
@@ -330,3 +340,16 @@ else:
     XS.to_csv(output_folder + scenario + '_no_comp.csv')
 
 print(f'Shocked scenario done.')
+
+
+# Create DataFrame
+df = pd.DataFrame(overshoot_data)
+
+# Output file
+outfile = 'production_overshoot_log.csv'
+
+# Append to file if it exists, otherwise write with header
+if os.path.exists(outfile):
+    df.to_csv(outfile, mode='a', header=False, index=False)
+else:
+    df.to_csv(outfile, mode='w', header=True, index=False)

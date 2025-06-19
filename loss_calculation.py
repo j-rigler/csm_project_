@@ -6,7 +6,7 @@
 
 ### PARAMETERS ### PAK RUS HOA URU ALL
 
-scenario = 'ALL'
+scenario = 'PAK'
 
 input_folder  = './input/'               # Folder with parameters
 output_folder = './results/'             # Folder to write results to
