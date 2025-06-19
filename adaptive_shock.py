@@ -12,7 +12,7 @@ import os
 
 ### PARAMETERS ###
 
-scenario = 'PAK'                    # specify scenario
+scenario = 'URU'                    # specify scenario
 production_cap = False              # turn on / off global production cap
 productioncap_value = 16e9          # global food production cap 16 billion t (rounded total t of 2023 FAO)
 overshoot_data = []

@@ -25,6 +25,8 @@ import numpy as np
 
 
 ### LOADING DATA ###
+if scenario not in ['PAK', 'RUS', 'HOA', 'URU', 'ALL']:
+        raise ValueError("Please choose a valid scenrio.")
 
 X_base  = pd.read_csv(output_folder + scenario + '_base_.csv', index_col = [0, 1], header = [0])
 XS_comp = pd.read_csv(output_folder + scenario + '.csv',       index_col = [0, 1], header = [0])
