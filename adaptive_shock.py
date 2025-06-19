@@ -298,6 +298,6 @@ else:
     XS.to_csv(output_folder + scenario + '_no_comp.csv')
     
 if production_cap:
-    overshoot_data.to_csv(output_folder + scenario + 'production_overshoot_log.csv')
+    overshoot_data.to_csv(output_folder + 'production_overshoot_log.csv')
 
 print(f'Shocked scenario done.')
