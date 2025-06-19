@@ -4,7 +4,7 @@
 #  ADAPTED BY CSM_SEXY_GRP_ - 2025, ORIGIN: SOPHIA BAUM - 2024
 
 
-### IMPORTS ### PAK RUS HOA URU ALL
+### IMPORTS ###
 
 from input.shock_input_data import *
 import os
@@ -13,12 +13,12 @@ import os
 ### PARAMETERS ###
 
 scenario = 'PAK'                    # specify scenario
-production_cap = True               # turn on / off global production cap
-compensation = True                 # turn adaptation on
-tau = 10                            # number of iterations
-#all_sceanrios = ['PAK', 'RUS', 'HOA', 'URU', 'ALL']
+production_cap = False              # turn on / off global production cap
+productioncap_value = 16e9          # global food production cap 16 billion t (rounded total t of 2023 FAO)
 overshoot_data = []
 
+compensation = True                 # turn adaptation on
+tau = 10                            # number of iterations
 
 input_folder  = './input/'          # folder with parameters and input data
 output_folder = './evaluation/'        # folder to write results to
@@ -30,42 +30,8 @@ limit_dev_sim = 0.32
 
 ### LOADING DATA ###
 
-                        # Select matching shock scenario
-match scenario:
-    case "PAK":
-        shock_sectors = shock_sectors_PAK
-        phi_0 = phi_0_PAK 
-
-    case "RUS": 
-        shock_sectors = shock_sectors_RUS
-        phi_0 = phi_0_RUS
-
-    case "HOA":
-        shock_sectors = shock_sectors_HOA
-        phi_0 = phi_0_HOA
-        
-    case "URU":
-        shock_sectors = shock_sectors_URU
-        phi_0 = phi_0_URU
-
-    case _:
-        shock_sectors = shock_sectors_PAK + shock_sectors_RUS + shock_sectors_HOA + shock_sectors_URU 
-        phi_0 = phi_0_PAK + phi_0_RUS + phi_0_HOA + phi_0_URU
-
-                        # Construct shock scaling
-shock_scaling = np.zeros((len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
-
-for row_index, row in enumerate(shock_scaling):
-    shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
-
-
-# global food production cap 16 billion t (rounded total t of 2023 FAO)
-productioncap = 16e9
-
-# Construct shock scaling
-shock_scaling = np.zeros(( len(shock_sectors), tau )) #[1 - phi(t) for t in range(tau)] # Create values to scale production-output
-for row_index, row in enumerate(shock_scaling):
-    shock_scaling[row_index, : ] = [1 - phi(phi_0[row_index], mu, t) for t in range(tau)]
+                        # Create shock scaling matrix
+shock_sectors, shock_scaling = create_shock_scaling_marix(scenario, tau)
 
                         # Load further information
 io_codes = pd.read_csv(input_folder + 'io_codes_alph.csv').drop('Unnamed: 0', axis = 1)
@@ -250,11 +216,12 @@ for t in range(tau):
     al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:, t]).T - xs, nan = 0))
     al_timetrace[:, t] = al.toarray()[:, 0]
         
-    total_prod = xs.sum()
-    productioncap *= 1.011
-# Global production cap logic (
-    if total_prod > productioncap:
-        scaling = productioncap / total_prod
+    total_prod = xs.sum()   
+    productioncap_value *= 1.011
+
+    # Global production cap logic (
+    if total_prod > productioncap_value:
+        scaling = productioncap_value / total_prod
         xs = xs.multiply(scaling)
     else:
         scaling = 1.0
@@ -322,10 +289,10 @@ for t in range(tau):
         #if production_cap:
         #    total_prod = xs.sum()
         #        # increase production cap by 1.1% per time step
-        #    productioncap *= 1.011
+        #    productioncap_value *= 1.011
 
-         #   if total_prod > productioncap:
-         #       scaling = productioncap / total_prod
+         #   if total_prod > productioncap_value:
+         #       scaling = productioncap_value / total_prod
           #      xs = xs.multiply(scaling)
     
                         # Store
