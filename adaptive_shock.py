@@ -303,20 +303,9 @@ XS.loc[idx[:,:], 'amount [t]'] = xs.toarray()[:, 0]
 
 if compensation:
     XS.to_csv(output_folder + scenario + '.csv')
+    overshoot_data.to_csv(output_folder + scenario + 'production_overshoot_log.csv')
 else:
     XS.to_csv(output_folder + scenario + '_no_comp.csv')
+    overshoot_data.to_csv(output_folder + scenario + 'production_overshoot_log.csv')
 
 print(f'Shocked scenario done.')
-
-
-# Create DataFrame
-df = pd.DataFrame(overshoot_data)
-
-# Output file
-outfile = 'production_overshoot_log.csv'
-
-# Append to file if it exists, otherwise write with header
-if os.path.exists(outfile):
-    df.to_csv(outfile, mode='a', header=False, index=False)
-else:
-    df.to_csv(outfile, mode='w', header=True, index=False)
