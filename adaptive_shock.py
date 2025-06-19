@@ -216,23 +216,27 @@ for t in range(tau):
     al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:, t]).T - xs, nan = 0))
     al_timetrace[:, t] = al.toarray()[:, 0]
         
-    if production_cap:    
-        total_prod = xs.sum()   
+    total_prod = xs.sum()
+
+    if production_cap:       
         productioncap_value *= 1.011
 
         # Global production cap logic (
         if total_prod > productioncap_value:
             scaling = productioncap_value / total_prod
-            xs = xs.multiply(scaling)
+            xs = xs.multiply(productioncap_value / total_prod)
         else:
             scaling = 1.0
-
-        overshoot_data.append({
-            'scenario': scenario,
-            'time_step': t,
-            'total_prod': float(total_prod),
-            'scaling': float(scaling)
-        })
+    else:
+        scaling = 1.0
+        
+      # Track production in all cases
+    overshoot_data.append({
+        'scenario': scenario,
+        'time_step': t,
+        'total_prod': float(total_prod),
+        'scaling': float(scaling)
+    })
 
                         # Check for events   
     if t == 1 and compensation:
@@ -289,7 +293,7 @@ for t in range(tau):
                         # Store
 XS.loc[idx[:,:], 'amount [t]'] = xs.toarray()[:, 0] 
 
-                        # Save
+                        # Save 
 #io.mmwrite(output_folder + 'matrix_trade_' + scenario + '.mtx', T_shock) # Save trade matrix
 
 if compensation:
@@ -297,7 +301,23 @@ if compensation:
 else:
     XS.to_csv(output_folder + scenario + '_no_comp.csv')
     
+                        # Save overshoot data
+df_new = pd.DataFrame(overshoot_data)
+
 if production_cap:
-    overshoot_data.to_csv(output_folder + 'production_overshoot_log.csv')
+    outfile = 'production_overshoot.csv'
+else:
+    outfile = 'total_prod.csv'
+
+if os.path.exists(outfile):
+    df_old = pd.read_csv(outfile)
+    # Drop previous rows with the same scenario name
+    df_old = df_old[df_old['scenario'] != scenario]
+    # Combine old (filtered) and new data
+    df_combined = pd.concat([df_old, df_new], ignore_index=True)
+else:
+    df_combined = df_new
+
+df_combined.to_csv(outfile, index=False)
 
 print(f'Shocked scenario done.')
