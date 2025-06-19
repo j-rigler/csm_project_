@@ -216,22 +216,23 @@ for t in range(tau):
     al                 = sprs.csr_matrix(np.nan_to_num(sprs.csr_matrix(x_timetrace_base[:, t]).T - xs, nan = 0))
     al_timetrace[:, t] = al.toarray()[:, 0]
         
-    total_prod = xs.sum()   
-    productioncap_value *= 1.011
+    if production_cap:    
+        total_prod = xs.sum()   
+        productioncap_value *= 1.011
 
-    # Global production cap logic (
-    if total_prod > productioncap_value:
-        scaling = productioncap_value / total_prod
-        xs = xs.multiply(scaling)
-    else:
-        scaling = 1.0
+        # Global production cap logic (
+        if total_prod > productioncap_value:
+            scaling = productioncap_value / total_prod
+            xs = xs.multiply(scaling)
+        else:
+            scaling = 1.0
 
-    overshoot_data.append({
-        'scenario': scenario,
-        'time_step': t,
-        'total_prod': float(total_prod),
-        'scaling': float(scaling)
-    })
+        overshoot_data.append({
+            'scenario': scenario,
+            'time_step': t,
+            'total_prod': float(total_prod),
+            'scaling': float(scaling)
+        })
 
                         # Check for events   
     if t == 1 and compensation:
@@ -284,16 +285,6 @@ for t in range(tau):
     
         mask_subs_3             = (T_shock.sum(axis = 0).A1 > 0) & ((T_shock.sum(axis = 0).A1 < 0.99) | (T_shock.sum(axis = 0).A1 > 1.01))
         T_shock[:, mask_subs_3] =  T_shock[:, mask_subs_3] / T_shock.sum(axis = 0).A1[mask_subs_3]
-
-            # global production cap:
-        #if production_cap:
-        #    total_prod = xs.sum()
-        #        # increase production cap by 1.1% per time step
-        #    productioncap_value *= 1.011
-
-         #   if total_prod > productioncap_value:
-         #       scaling = productioncap_value / total_prod
-          #      xs = xs.multiply(scaling)
     
                         # Store
 XS.loc[idx[:,:], 'amount [t]'] = xs.toarray()[:, 0] 
@@ -303,9 +294,10 @@ XS.loc[idx[:,:], 'amount [t]'] = xs.toarray()[:, 0]
 
 if compensation:
     XS.to_csv(output_folder + scenario + '.csv')
-    overshoot_data.to_csv(output_folder + scenario + 'production_overshoot_log.csv')
 else:
     XS.to_csv(output_folder + scenario + '_no_comp.csv')
+    
+if production_cap:
     overshoot_data.to_csv(output_folder + scenario + 'production_overshoot_log.csv')
 
 print(f'Shocked scenario done.')
