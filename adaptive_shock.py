@@ -11,8 +11,8 @@ import os
 
 ### PARAMETERS ###
 
-scenario = 'HOA'                    # specify scenario
-production_cap = True               # turn on / off global production cap
+scenario = 'ALL'                    # specify scenario
+production_cap = False               # turn on / off global production cap
 compensation = True                 # turn adaptation on
 tau = 10                            # number of iterations
 overshoot_data = []
@@ -210,23 +210,28 @@ for t in range(tau):
     
         # Calculate current total production (sum of all sectors)
         current_prod = o.sum()
-    
+        print(f"Current production was at {current_prod:.2f}")
+        
         if current_prod > productioncap:
             # Calculate scaling factor to bring production down to cap
             scaling = productioncap / current_prod
             # Apply scaling to all sectors
             o = o.multiply(scaling)
             # Store the actual production after scaling
-            current_prod = o.sum()
-            print(f"Time {t}: Production capped at {productioncap:.2f} (was {current_prod/scaling:.2f})")
+            caped_prod = o.sum()
+            
+            print(f"Time {t}: Production capped at {productioncap:.2f} (Reduced by {current_prod-caped_prod:.2f})")
         else:
             scaling = 1.0
     
+        print(f"Scaling factor saved: {scaling:.4f}")
+        
         overshoot_data.append({
             'scenario': scenario,
             'time_step': t,
             'total_prod': float(current_prod),
             'cap': float(productioncap),
+            'caped_prod' : float(caped_prod),
             'scaling': float(scaling)
             })
     else:
